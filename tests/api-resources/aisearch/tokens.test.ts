@@ -32,7 +32,6 @@ describe('resource tokens', () => {
       cf_api_id: 'cf_api_id',
       cf_api_key: 'cf_api_key',
       name: 'name',
-      legacy: true,
     });
   });
 
