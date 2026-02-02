@@ -287,11 +287,6 @@ export interface TokenCreateParams {
    * Body param
    */
   name: string;
-
-  /**
-   * Body param
-   */
-  legacy?: boolean;
 }
 
 export interface TokenUpdateParams {
