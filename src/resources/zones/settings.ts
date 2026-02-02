@@ -1562,6 +1562,7 @@ export type SettingEditResponse =
   | SettingEditResponse.ZonesSchemasCacheLevel
   | ChallengeTTL
   | SettingEditResponse.ZonesChinaNetworkEnabled
+  | SettingEditResponse.ZonesContentConverter
   | Ciphers
   | SettingEditResponse.ZonesCNAMEFlattening
   | DevelopmentMode
@@ -1809,6 +1810,36 @@ export namespace SettingEditResponse {
      * Current value of the zone setting.
      */
     value: 'on' | 'off';
+
+    /**
+     * Whether or not this setting can be modified for this zone (based on your
+     * Cloudflare plan level).
+     */
+    editable?: true | false;
+
+    /**
+     * last time this setting was modified.
+     */
+    modified_on?: string | null;
+  }
+
+  /**
+   * When enabled and the client sends an Accept header requesting text/markdown,
+   * Cloudflare will convert HTML responses to Markdown format using the toMarkdown()
+   * service. Refer to the
+   * [developer documentation](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)
+   * for more information.
+   */
+  export interface ZonesContentConverter {
+    /**
+     * ID of the zone setting.
+     */
+    id: 'content_converter';
+
+    /**
+     * Current value of the zone setting.
+     */
+    value: 'off' | 'on';
 
     /**
      * Whether or not this setting can be modified for this zone (based on your
@@ -2603,6 +2634,7 @@ export type SettingGetResponse =
   | SettingGetResponse.ZonesSchemasCacheLevel
   | ChallengeTTL
   | SettingGetResponse.ZonesChinaNetworkEnabled
+  | SettingGetResponse.ZonesContentConverter
   | Ciphers
   | SettingGetResponse.ZonesCNAMEFlattening
   | DevelopmentMode
@@ -2850,6 +2882,36 @@ export namespace SettingGetResponse {
      * Current value of the zone setting.
      */
     value: 'on' | 'off';
+
+    /**
+     * Whether or not this setting can be modified for this zone (based on your
+     * Cloudflare plan level).
+     */
+    editable?: true | false;
+
+    /**
+     * last time this setting was modified.
+     */
+    modified_on?: string | null;
+  }
+
+  /**
+   * When enabled and the client sends an Accept header requesting text/markdown,
+   * Cloudflare will convert HTML responses to Markdown format using the toMarkdown()
+   * service. Refer to the
+   * [developer documentation](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)
+   * for more information.
+   */
+  export interface ZonesContentConverter {
+    /**
+     * ID of the zone setting.
+     */
+    id: 'content_converter';
+
+    /**
+     * Current value of the zone setting.
+     */
+    value: 'off' | 'on';
 
     /**
      * Whether or not this setting can be modified for this zone (based on your
