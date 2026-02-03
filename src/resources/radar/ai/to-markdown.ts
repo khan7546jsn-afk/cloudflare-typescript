@@ -3,7 +3,6 @@
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import { SinglePage } from '../../../pagination';
-import { type BlobLike } from '../../../uploads';
 
 export class ToMarkdown extends APIResource {
   /**
@@ -12,21 +11,14 @@ export class ToMarkdown extends APIResource {
    * @deprecated Use [AI > To Markdown](https://developers.cloudflare.com/api/resources/ai/subresources/to_markdown/) instead.
    */
   create(
-    body: string | ArrayBufferView | ArrayBuffer | BlobLike,
     params: ToMarkdownCreateParams,
     options?: Core.RequestOptions,
   ): Core.PagePromise<ToMarkdownCreateResponsesSinglePage, ToMarkdownCreateResponse> {
-    const { account_id } = params;
+    const { account_id, ...body } = params;
     return this._client.getAPIList(
       `/accounts/${account_id}/ai/tomarkdown`,
       ToMarkdownCreateResponsesSinglePage,
-      {
-        body: body,
-        method: 'post',
-        ...options,
-        headers: { 'Content-Type': 'application/octet-stream', ...options?.headers },
-        __binaryRequest: true,
-      },
+      Core.multipartFormRequestOptions({ body, method: 'post', ...options }),
     );
   }
 }
@@ -50,6 +42,11 @@ export interface ToMarkdownCreateParams {
    * Path param
    */
   account_id: string;
+
+  /**
+   * Body param
+   */
+  files: Array<Core.Uploadable>;
 }
 
 ToMarkdown.ToMarkdownCreateResponsesSinglePage = ToMarkdownCreateResponsesSinglePage;
