@@ -3,7 +3,6 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import { SinglePage } from '../../pagination';
-import { type BlobLike } from '../../uploads';
 
 export class ToMarkdown extends APIResource {
   /**
@@ -25,21 +24,14 @@ export class ToMarkdown extends APIResource {
    * Convert Files into Markdown
    */
   transform(
-    file: string | ArrayBufferView | ArrayBuffer | BlobLike,
     params: ToMarkdownTransformParams,
     options?: Core.RequestOptions,
   ): Core.PagePromise<ToMarkdownTransformResponsesSinglePage, ToMarkdownTransformResponse> {
-    const { account_id } = params;
+    const { account_id, file } = params;
     return this._client.getAPIList(
       `/accounts/${account_id}/ai/tomarkdown`,
       ToMarkdownTransformResponsesSinglePage,
-      {
-        body: file,
-        method: 'post',
-        ...options,
-        headers: { 'Content-Type': 'application/octet-stream', ...options?.headers },
-        __binaryRequest: true,
-      },
+      Core.multipartFormRequestOptions({ body: file, method: 'post', ...options }),
     );
   }
 }
@@ -75,6 +67,17 @@ export interface ToMarkdownTransformParams {
    * Path param
    */
   account_id: string;
+
+  /**
+   * Body param
+   */
+  file: ToMarkdownTransformParams.File;
+}
+
+export namespace ToMarkdownTransformParams {
+  export interface File {
+    files: Array<Core.Uploadable>;
+  }
 }
 
 ToMarkdown.ToMarkdownSupportedResponsesSinglePage = ToMarkdownSupportedResponsesSinglePage;
