@@ -28,13 +28,18 @@ export class Tokens extends APIResource {
   }
 
   /**
-   * Delete tokens.
+   * Update tokens.
    *
    * @example
    * ```ts
    * const token = await client.aiSearch.tokens.update(
    *   '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',
-   *   { account_id: 'c3dc5f0b34a14ff8e1b3ec04895e1b22' },
+   *   {
+   *     account_id: 'c3dc5f0b34a14ff8e1b3ec04895e1b22',
+   *     cf_api_id: 'cf_api_id',
+   *     cf_api_key: 'cf_api_key',
+   *     name: 'name',
+   *   },
    * );
    * ```
    */
@@ -43,11 +48,12 @@ export class Tokens extends APIResource {
     params: TokenUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<TokenUpdateResponse> {
-    const { account_id } = params;
+    const { account_id, ...body } = params;
     return (
-      this._client.delete(`/accounts/${account_id}/ai-search/tokens/${id}`, options) as Core.APIPromise<{
-        result: TokenUpdateResponse;
-      }>
+      this._client.put(`/accounts/${account_id}/ai-search/tokens/${id}`, {
+        body,
+        ...options,
+      }) as Core.APIPromise<{ result: TokenUpdateResponse }>
     )._thenUnwrap((obj) => obj.result);
   }
 
@@ -101,7 +107,7 @@ export class Tokens extends APIResource {
   }
 
   /**
-   * Delete tokens.
+   * Read tokens.
    *
    * @example
    * ```ts
@@ -118,7 +124,7 @@ export class Tokens extends APIResource {
   ): Core.APIPromise<TokenReadResponse> {
     const { account_id } = params;
     return (
-      this._client.delete(`/accounts/${account_id}/ai-search/tokens/${id}`, options) as Core.APIPromise<{
+      this._client.get(`/accounts/${account_id}/ai-search/tokens/${id}`, options) as Core.APIPromise<{
         result: TokenReadResponse;
       }>
     )._thenUnwrap((obj) => obj.result);
@@ -290,7 +296,25 @@ export interface TokenCreateParams {
 }
 
 export interface TokenUpdateParams {
+  /**
+   * Path param
+   */
   account_id: string;
+
+  /**
+   * Body param
+   */
+  cf_api_id: string;
+
+  /**
+   * Body param
+   */
+  cf_api_key: string;
+
+  /**
+   * Body param
+   */
+  name: string;
 }
 
 export interface TokenListParams extends V4PagePaginationArrayParams {
