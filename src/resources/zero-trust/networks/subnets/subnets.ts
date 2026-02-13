@@ -8,9 +8,22 @@ import {
   CloudflareSourceUpdateParams,
   CloudflareSourceUpdateResponse,
 } from './cloudflare-source';
+import * as WARPAPI from './warp';
+import {
+  WARP,
+  WARPCreateParams,
+  WARPCreateResponse,
+  WARPDeleteParams,
+  WARPDeleteResponse,
+  WARPEditParams,
+  WARPEditResponse,
+  WARPGetParams,
+  WARPGetResponse,
+} from './warp';
 import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../../../pagination';
 
 export class Subnets extends APIResource {
+  warp: WARPAPI.WARP = new WARPAPI.WARP(this._client);
   cloudflareSource: CloudflareSourceAPI.CloudflareSource = new CloudflareSourceAPI.CloudflareSource(
     this._client,
   );
@@ -146,6 +159,7 @@ export interface SubnetListParams extends V4PagePaginationArrayParams {
 }
 
 Subnets.SubnetListResponsesV4PagePaginationArray = SubnetListResponsesV4PagePaginationArray;
+Subnets.WARP = WARP;
 Subnets.CloudflareSource = CloudflareSource;
 
 export declare namespace Subnets {
@@ -153,6 +167,18 @@ export declare namespace Subnets {
     type SubnetListResponse as SubnetListResponse,
     SubnetListResponsesV4PagePaginationArray as SubnetListResponsesV4PagePaginationArray,
     type SubnetListParams as SubnetListParams,
+  };
+
+  export {
+    WARP as WARP,
+    type WARPCreateResponse as WARPCreateResponse,
+    type WARPDeleteResponse as WARPDeleteResponse,
+    type WARPEditResponse as WARPEditResponse,
+    type WARPGetResponse as WARPGetResponse,
+    type WARPCreateParams as WARPCreateParams,
+    type WARPDeleteParams as WARPDeleteParams,
+    type WARPEditParams as WARPEditParams,
+    type WARPGetParams as WARPGetParams,
   };
 
   export {
