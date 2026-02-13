@@ -188,6 +188,9 @@ export interface EntryCreateResponse {
 
   created_at: string;
 
+  /**
+   * @deprecated
+   */
   enabled: boolean;
 
   name: string;
@@ -196,6 +199,11 @@ export interface EntryCreateResponse {
 
   updated_at: string;
 
+  description?: string | null;
+
+  /**
+   * @deprecated
+   */
   profile_id?: string | null;
 }
 
@@ -213,6 +221,9 @@ export namespace EntryUpdateResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -223,6 +234,11 @@ export namespace EntryUpdateResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
   }
 
@@ -237,6 +253,9 @@ export namespace EntryUpdateResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     variant?: Predefined.Variant;
@@ -350,6 +369,9 @@ export namespace EntryListResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -360,6 +382,11 @@ export namespace EntryListResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     upload_status?: 'empty' | 'uploading' | 'pending' | 'processing' | 'failed' | 'complete';
@@ -376,6 +403,9 @@ export namespace EntryListResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     upload_status?: 'empty' | 'uploading' | 'pending' | 'processing' | 'failed' | 'complete';
@@ -501,6 +531,9 @@ export namespace EntryGetResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -511,6 +544,11 @@ export namespace EntryGetResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     profiles?: Array<UnionMember0.Profile>;
@@ -540,6 +578,9 @@ export namespace EntryGetResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     profiles?: Array<UnionMember1.Profile>;
@@ -736,6 +777,11 @@ export interface EntryCreateParams {
   /**
    * Body param
    */
+  description?: string | null;
+
+  /**
+   * Body param
+   */
   profile_id?: string;
 }
 
@@ -765,6 +811,11 @@ export declare namespace EntryUpdateParams {
      * Body param
      */
     type: 'custom';
+
+    /**
+     * Body param
+     */
+    description?: string | null;
 
     /**
      * Body param

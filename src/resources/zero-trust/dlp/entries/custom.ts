@@ -143,6 +143,9 @@ export interface CustomCreateResponse {
 
   created_at: string;
 
+  /**
+   * @deprecated
+   */
   enabled: boolean;
 
   name: string;
@@ -151,6 +154,11 @@ export interface CustomCreateResponse {
 
   updated_at: string;
 
+  description?: string | null;
+
+  /**
+   * @deprecated
+   */
   profile_id?: string | null;
 }
 
@@ -159,6 +167,9 @@ export interface CustomUpdateResponse {
 
   created_at: string;
 
+  /**
+   * @deprecated
+   */
   enabled: boolean;
 
   name: string;
@@ -167,6 +178,11 @@ export interface CustomUpdateResponse {
 
   updated_at: string;
 
+  description?: string | null;
+
+  /**
+   * @deprecated
+   */
   profile_id?: string | null;
 }
 
@@ -184,6 +200,9 @@ export namespace CustomListResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -194,6 +213,11 @@ export namespace CustomListResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     upload_status?: 'empty' | 'uploading' | 'pending' | 'processing' | 'failed' | 'complete';
@@ -210,6 +234,9 @@ export namespace CustomListResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     upload_status?: 'empty' | 'uploading' | 'pending' | 'processing' | 'failed' | 'complete';
@@ -335,6 +362,9 @@ export namespace CustomGetResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -345,6 +375,11 @@ export namespace CustomGetResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     profiles?: Array<UnionMember0.Profile>;
@@ -374,6 +409,9 @@ export namespace CustomGetResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     profiles?: Array<UnionMember1.Profile>;
@@ -570,6 +608,11 @@ export interface CustomCreateParams {
   /**
    * Body param
    */
+  description?: string | null;
+
+  /**
+   * Body param
+   */
   profile_id?: string;
 }
 
@@ -593,6 +636,11 @@ export interface CustomUpdateParams {
    * Body param
    */
   pattern: ProfilesCustomAPI.PatternParam;
+
+  /**
+   * Body param
+   */
+  description?: string | null;
 }
 
 export interface CustomListParams {

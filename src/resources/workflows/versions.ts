@@ -49,6 +49,8 @@ export interface VersionListResponse {
 
   created_on: string;
 
+  has_dag: boolean;
+
   modified_on: string;
 
   workflow_id: string;
@@ -60,6 +62,8 @@ export interface VersionGetResponse {
   class_name: string;
 
   created_on: string;
+
+  has_dag: boolean;
 
   modified_on: string;
 
