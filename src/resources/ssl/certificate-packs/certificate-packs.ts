@@ -4,7 +4,7 @@ import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as QuotaAPI from './quota';
 import { Quota, QuotaGetParams, QuotaGetResponse } from './quota';
-import { SinglePage } from '../../../pagination';
+import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../../pagination';
 
 export class CertificatePacks extends APIResource {
   quota: QuotaAPI.Quota = new QuotaAPI.Quota(this._client);
@@ -58,11 +58,11 @@ export class CertificatePacks extends APIResource {
   list(
     params: CertificatePackListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<CertificatePackListResponsesSinglePage, CertificatePackListResponse> {
+  ): Core.PagePromise<CertificatePackListResponsesV4PagePaginationArray, CertificatePackListResponse> {
     const { zone_id, ...query } = params;
     return this._client.getAPIList(
       `/zones/${zone_id}/ssl/certificate_packs`,
-      CertificatePackListResponsesSinglePage,
+      CertificatePackListResponsesV4PagePaginationArray,
       { query, ...options },
     );
   }
@@ -147,7 +147,7 @@ export class CertificatePacks extends APIResource {
   }
 }
 
-export class CertificatePackListResponsesSinglePage extends SinglePage<CertificatePackListResponse> {}
+export class CertificatePackListResponsesV4PagePaginationArray extends V4PagePaginationArray<CertificatePackListResponse> {}
 
 export type Host = string;
 
@@ -1299,11 +1299,16 @@ export interface CertificatePackCreateParams {
   cloudflare_branding?: boolean;
 }
 
-export interface CertificatePackListParams {
+export interface CertificatePackListParams extends V4PagePaginationArrayParams {
   /**
    * Path param: Identifier.
    */
   zone_id: string;
+
+  /**
+   * Query param: Specify the deployment environment for the certificate packs.
+   */
+  deploy?: 'staging' | 'production';
 
   /**
    * Query param: Include Certificate Packs of all statuses, not just active ones.
@@ -1338,7 +1343,8 @@ export interface CertificatePackGetParams {
   zone_id: string;
 }
 
-CertificatePacks.CertificatePackListResponsesSinglePage = CertificatePackListResponsesSinglePage;
+CertificatePacks.CertificatePackListResponsesV4PagePaginationArray =
+  CertificatePackListResponsesV4PagePaginationArray;
 CertificatePacks.Quota = Quota;
 
 export declare namespace CertificatePacks {
@@ -1352,7 +1358,7 @@ export declare namespace CertificatePacks {
     type CertificatePackDeleteResponse as CertificatePackDeleteResponse,
     type CertificatePackEditResponse as CertificatePackEditResponse,
     type CertificatePackGetResponse as CertificatePackGetResponse,
-    CertificatePackListResponsesSinglePage as CertificatePackListResponsesSinglePage,
+    CertificatePackListResponsesV4PagePaginationArray as CertificatePackListResponsesV4PagePaginationArray,
     type CertificatePackCreateParams as CertificatePackCreateParams,
     type CertificatePackListParams as CertificatePackListParams,
     type CertificatePackDeleteParams as CertificatePackDeleteParams,
