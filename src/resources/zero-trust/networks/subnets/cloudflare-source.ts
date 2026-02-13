@@ -72,7 +72,7 @@ export interface CloudflareSourceUpdateResponse {
   /**
    * The type of subnet.
    */
-  subnet_type?: 'cloudflare_source';
+  subnet_type?: 'cloudflare_source' | 'warp';
 }
 
 export interface CloudflareSourceUpdateParams {

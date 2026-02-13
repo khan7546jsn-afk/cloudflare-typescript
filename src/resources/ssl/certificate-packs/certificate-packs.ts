@@ -246,6 +246,11 @@ export interface CertificatePackCreateResponse {
   cloudflare_branding?: boolean;
 
   /**
+   * DCV Delegation records for domain validation.
+   */
+  dcv_delegation_records?: Array<CertificatePackCreateResponse.DCVDelegationRecord>;
+
+  /**
    * Identifier of the primary certificate in a pack.
    */
   primary_certificate?: string;
@@ -347,17 +352,20 @@ export namespace CertificatePackCreateResponse {
     }
   }
 
-  export interface ValidationError {
-    /**
-     * A domain validation error.
-     */
-    message?: string;
-  }
-
   /**
    * Certificate's required validation record.
    */
-  export interface ValidationRecord {
+  export interface DCVDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
     /**
      * The set of email addresses that the certificate authority (CA) will use to
      * complete domain validation.
@@ -374,6 +382,67 @@ export namespace CertificatePackCreateResponse {
      * The url that will be checked during domain validation.
      */
     http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
+
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record
+     * during domain validation .
+     */
+    txt_name?: string;
+
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain
+     * validation.
+     */
+    txt_value?: string;
+  }
+
+  export interface ValidationError {
+    /**
+     * A domain validation error.
+     */
+    message?: string;
+  }
+
+  /**
+   * Certificate's required validation record.
+   */
+  export interface ValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to
+     * complete domain validation.
+     */
+    emails?: Array<string>;
+
+    /**
+     * The content that the certificate authority (CA) will expect to find at the
+     * http_url during the domain validation.
+     */
+    http_body?: string;
+
+    /**
+     * The url that will be checked during domain validation.
+     */
+    http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
 
     /**
      * The hostname that the certificate authority (CA) will check for a TXT record
@@ -439,6 +508,11 @@ export interface CertificatePackListResponse {
    * subdomain of sni.cloudflaressl.com as the Common Name if set to true.
    */
   cloudflare_branding?: boolean;
+
+  /**
+   * DCV Delegation records for domain validation.
+   */
+  dcv_delegation_records?: Array<CertificatePackListResponse.DCVDelegationRecord>;
 
   /**
    * Identifier of the primary certificate in a pack.
@@ -542,17 +616,20 @@ export namespace CertificatePackListResponse {
     }
   }
 
-  export interface ValidationError {
-    /**
-     * A domain validation error.
-     */
-    message?: string;
-  }
-
   /**
    * Certificate's required validation record.
    */
-  export interface ValidationRecord {
+  export interface DCVDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
     /**
      * The set of email addresses that the certificate authority (CA) will use to
      * complete domain validation.
@@ -569,6 +646,67 @@ export namespace CertificatePackListResponse {
      * The url that will be checked during domain validation.
      */
     http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
+
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record
+     * during domain validation .
+     */
+    txt_name?: string;
+
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain
+     * validation.
+     */
+    txt_value?: string;
+  }
+
+  export interface ValidationError {
+    /**
+     * A domain validation error.
+     */
+    message?: string;
+  }
+
+  /**
+   * Certificate's required validation record.
+   */
+  export interface ValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to
+     * complete domain validation.
+     */
+    emails?: Array<string>;
+
+    /**
+     * The content that the certificate authority (CA) will expect to find at the
+     * http_url during the domain validation.
+     */
+    http_body?: string;
+
+    /**
+     * The url that will be checked during domain validation.
+     */
+    http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
 
     /**
      * The hostname that the certificate authority (CA) will check for a TXT record
@@ -641,6 +779,11 @@ export interface CertificatePackEditResponse {
    * subdomain of sni.cloudflaressl.com as the Common Name if set to true.
    */
   cloudflare_branding?: boolean;
+
+  /**
+   * DCV Delegation records for domain validation.
+   */
+  dcv_delegation_records?: Array<CertificatePackEditResponse.DCVDelegationRecord>;
 
   /**
    * Identifier of the primary certificate in a pack.
@@ -744,17 +887,20 @@ export namespace CertificatePackEditResponse {
     }
   }
 
-  export interface ValidationError {
-    /**
-     * A domain validation error.
-     */
-    message?: string;
-  }
-
   /**
    * Certificate's required validation record.
    */
-  export interface ValidationRecord {
+  export interface DCVDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
     /**
      * The set of email addresses that the certificate authority (CA) will use to
      * complete domain validation.
@@ -771,6 +917,67 @@ export namespace CertificatePackEditResponse {
      * The url that will be checked during domain validation.
      */
     http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
+
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record
+     * during domain validation .
+     */
+    txt_name?: string;
+
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain
+     * validation.
+     */
+    txt_value?: string;
+  }
+
+  export interface ValidationError {
+    /**
+     * A domain validation error.
+     */
+    message?: string;
+  }
+
+  /**
+   * Certificate's required validation record.
+   */
+  export interface ValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to
+     * complete domain validation.
+     */
+    emails?: Array<string>;
+
+    /**
+     * The content that the certificate authority (CA) will expect to find at the
+     * http_url during the domain validation.
+     */
+    http_body?: string;
+
+    /**
+     * The url that will be checked during domain validation.
+     */
+    http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
 
     /**
      * The hostname that the certificate authority (CA) will check for a TXT record
@@ -836,6 +1043,11 @@ export interface CertificatePackGetResponse {
    * subdomain of sni.cloudflaressl.com as the Common Name if set to true.
    */
   cloudflare_branding?: boolean;
+
+  /**
+   * DCV Delegation records for domain validation.
+   */
+  dcv_delegation_records?: Array<CertificatePackGetResponse.DCVDelegationRecord>;
 
   /**
    * Identifier of the primary certificate in a pack.
@@ -939,17 +1151,20 @@ export namespace CertificatePackGetResponse {
     }
   }
 
-  export interface ValidationError {
-    /**
-     * A domain validation error.
-     */
-    message?: string;
-  }
-
   /**
    * Certificate's required validation record.
    */
-  export interface ValidationRecord {
+  export interface DCVDelegationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
     /**
      * The set of email addresses that the certificate authority (CA) will use to
      * complete domain validation.
@@ -966,6 +1181,67 @@ export namespace CertificatePackGetResponse {
      * The url that will be checked during domain validation.
      */
     http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
+
+    /**
+     * The hostname that the certificate authority (CA) will check for a TXT record
+     * during domain validation .
+     */
+    txt_name?: string;
+
+    /**
+     * The TXT record that the certificate authority (CA) will check during domain
+     * validation.
+     */
+    txt_value?: string;
+  }
+
+  export interface ValidationError {
+    /**
+     * A domain validation error.
+     */
+    message?: string;
+  }
+
+  /**
+   * Certificate's required validation record.
+   */
+  export interface ValidationRecord {
+    /**
+     * The CNAME record hostname for DCV delegation.
+     */
+    cname?: string;
+
+    /**
+     * The CNAME record target value for DCV delegation.
+     */
+    cname_target?: string;
+
+    /**
+     * The set of email addresses that the certificate authority (CA) will use to
+     * complete domain validation.
+     */
+    emails?: Array<string>;
+
+    /**
+     * The content that the certificate authority (CA) will expect to find at the
+     * http_url during the domain validation.
+     */
+    http_body?: string;
+
+    /**
+     * The url that will be checked during domain validation.
+     */
+    http_url?: string;
+
+    /**
+     * Status of the validation record.
+     */
+    status?: string;
 
     /**
      * The hostname that the certificate authority (CA) will check for a TXT record

@@ -136,13 +136,7 @@ export class TokenListResponsesV4PagePaginationArray extends V4PagePaginationArr
 export interface TokenCreateResponse {
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cf_api_id: string;
-
-  cf_api_key: string;
 
   created_at: string;
 
@@ -150,27 +144,19 @@ export interface TokenCreateResponse {
 
   name: string;
 
-  created_by?: string;
+  created_by?: string | null;
 
   enabled?: boolean;
 
   legacy?: boolean;
 
-  modified_by?: string;
-
-  synced_at?: string;
+  modified_by?: string | null;
 }
 
 export interface TokenUpdateResponse {
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cf_api_id: string;
-
-  cf_api_key: string;
 
   created_at: string;
 
@@ -178,27 +164,19 @@ export interface TokenUpdateResponse {
 
   name: string;
 
-  created_by?: string;
+  created_by?: string | null;
 
   enabled?: boolean;
 
   legacy?: boolean;
 
-  modified_by?: string;
-
-  synced_at?: string;
+  modified_by?: string | null;
 }
 
 export interface TokenListResponse {
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cf_api_id: string;
-
-  cf_api_key: string;
 
   created_at: string;
 
@@ -206,27 +184,19 @@ export interface TokenListResponse {
 
   name: string;
 
-  created_by?: string;
+  created_by?: string | null;
 
   enabled?: boolean;
 
   legacy?: boolean;
 
-  modified_by?: string;
-
-  synced_at?: string;
+  modified_by?: string | null;
 }
 
 export interface TokenDeleteResponse {
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cf_api_id: string;
-
-  cf_api_key: string;
 
   created_at: string;
 
@@ -234,27 +204,19 @@ export interface TokenDeleteResponse {
 
   name: string;
 
-  created_by?: string;
+  created_by?: string | null;
 
   enabled?: boolean;
 
   legacy?: boolean;
 
-  modified_by?: string;
-
-  synced_at?: string;
+  modified_by?: string | null;
 }
 
 export interface TokenReadResponse {
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cf_api_id: string;
-
-  cf_api_key: string;
 
   created_at: string;
 
@@ -262,15 +224,13 @@ export interface TokenReadResponse {
 
   name: string;
 
-  created_by?: string;
+  created_by?: string | null;
 
   enabled?: boolean;
 
   legacy?: boolean;
 
-  modified_by?: string;
-
-  synced_at?: string;
+  modified_by?: string | null;
 }
 
 export interface TokenCreateParams {

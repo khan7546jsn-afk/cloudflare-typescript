@@ -439,7 +439,8 @@ export interface InvestigateListParams extends V4PagePaginationArrayParams {
   domain?: string;
 
   /**
-   * Query param: The end of the search date range. Defaults to `now`.
+   * Query param: The end of the search date range. Defaults to `now` if not
+   * provided.
    */
   end?: string;
 
@@ -503,8 +504,8 @@ export interface InvestigateListParams extends V4PagePaginationArrayParams {
   sender?: string;
 
   /**
-   * Query param: The beginning of the search date range. Defaults to
-   * `now - 30 days`.
+   * Query param: The beginning of the search date range. Defaults to `now - 30 days`
+   * if not provided.
    */
   start?: string;
 

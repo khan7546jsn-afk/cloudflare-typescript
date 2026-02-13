@@ -97,7 +97,8 @@ export interface SubmissionListParams extends V4PagePaginationArrayParams {
   account_id: string;
 
   /**
-   * Query param: The end of the search date range. Defaults to `now`.
+   * Query param: The end of the search date range. Defaults to `now` if not
+   * provided.
    */
   end?: string;
 
@@ -122,8 +123,8 @@ export interface SubmissionListParams extends V4PagePaginationArrayParams {
   requested_disposition?: 'MALICIOUS' | 'SUSPICIOUS' | 'SPOOF' | 'SPAM' | 'BULK' | 'NONE';
 
   /**
-   * Query param: The beginning of the search date range. Defaults to
-   * `now - 30 days`.
+   * Query param: The beginning of the search date range. Defaults to `now - 30 days`
+   * if not provided.
    */
   start?: string;
 

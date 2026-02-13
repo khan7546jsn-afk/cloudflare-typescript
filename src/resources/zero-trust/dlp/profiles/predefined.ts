@@ -137,6 +137,9 @@ export namespace PredefinedProfile {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -147,6 +150,11 @@ export namespace PredefinedProfile {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
   }
 
@@ -161,6 +169,9 @@ export namespace PredefinedProfile {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     variant?: PredefinedEntry.Variant;
@@ -309,6 +320,9 @@ export namespace PredefinedUpdateResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -319,6 +333,11 @@ export namespace PredefinedUpdateResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
   }
 
@@ -333,6 +352,9 @@ export namespace PredefinedUpdateResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     variant?: PredefinedEntry.Variant;
@@ -483,6 +505,9 @@ export namespace PredefinedGetResponse {
 
     created_at: string;
 
+    /**
+     * @deprecated
+     */
     enabled: boolean;
 
     name: string;
@@ -493,6 +518,11 @@ export namespace PredefinedGetResponse {
 
     updated_at: string;
 
+    description?: string | null;
+
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
   }
 
@@ -507,6 +537,9 @@ export namespace PredefinedGetResponse {
 
     type: 'predefined';
 
+    /**
+     * @deprecated
+     */
     profile_id?: string | null;
 
     variant?: PredefinedEntry.Variant;
