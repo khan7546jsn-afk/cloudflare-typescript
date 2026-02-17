@@ -276,7 +276,7 @@ export namespace ScriptAndVersionSettingEditResponse {
        * Pass information from the Dispatch Worker to the Outbound Worker through the
        * parameters.
        */
-      params?: Array<string>;
+      params?: Array<Outbound.Param>;
 
       /**
        * Outbound worker.
@@ -285,10 +285,22 @@ export namespace ScriptAndVersionSettingEditResponse {
     }
 
     export namespace Outbound {
+      export interface Param {
+        /**
+         * Name of the parameter.
+         */
+        name: string;
+      }
+
       /**
        * Outbound worker.
        */
       export interface Worker {
+        /**
+         * Entrypoint to invoke on the outbound worker.
+         */
+        entrypoint?: string;
+
         /**
          * Environment of the outbound worker.
          */
@@ -394,7 +406,7 @@ export namespace ScriptAndVersionSettingEditResponse {
     /**
      * JSON data to use.
      */
-    json: string;
+    json: unknown;
 
     /**
      * A JavaScript variable name for the binding.
@@ -1147,7 +1159,7 @@ export namespace ScriptAndVersionSettingGetResponse {
        * Pass information from the Dispatch Worker to the Outbound Worker through the
        * parameters.
        */
-      params?: Array<string>;
+      params?: Array<Outbound.Param>;
 
       /**
        * Outbound worker.
@@ -1156,10 +1168,22 @@ export namespace ScriptAndVersionSettingGetResponse {
     }
 
     export namespace Outbound {
+      export interface Param {
+        /**
+         * Name of the parameter.
+         */
+        name: string;
+      }
+
       /**
        * Outbound worker.
        */
       export interface Worker {
+        /**
+         * Entrypoint to invoke on the outbound worker.
+         */
+        entrypoint?: string;
+
         /**
          * Environment of the outbound worker.
          */
@@ -1265,7 +1289,7 @@ export namespace ScriptAndVersionSettingGetResponse {
     /**
      * JSON data to use.
      */
-    json: string;
+    json: unknown;
 
     /**
      * A JavaScript variable name for the binding.
@@ -2036,7 +2060,7 @@ export namespace ScriptAndVersionSettingEditParams {
          * Pass information from the Dispatch Worker to the Outbound Worker through the
          * parameters.
          */
-        params?: Array<string>;
+        params?: Array<Outbound.Param>;
 
         /**
          * Outbound worker.
@@ -2045,10 +2069,22 @@ export namespace ScriptAndVersionSettingEditParams {
       }
 
       export namespace Outbound {
+        export interface Param {
+          /**
+           * Name of the parameter.
+           */
+          name: string;
+        }
+
         /**
          * Outbound worker.
          */
         export interface Worker {
+          /**
+           * Entrypoint to invoke on the outbound worker.
+           */
+          entrypoint?: string;
+
           /**
            * Environment of the outbound worker.
            */
@@ -2154,7 +2190,7 @@ export namespace ScriptAndVersionSettingEditParams {
       /**
        * JSON data to use.
        */
-      json: string;
+      json: unknown;
 
       /**
        * A JavaScript variable name for the binding.
