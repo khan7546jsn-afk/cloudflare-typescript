@@ -1504,6 +1504,11 @@ export type ScriptSearchResponse = Array<ScriptSearchResponse.ScriptSearchRespon
 export namespace ScriptSearchResponse {
   export interface ScriptSearchResponseItem {
     /**
+     * Identifier.
+     */
+    id: string;
+
+    /**
      * When the script was created.
      */
     created_on: string;
@@ -1517,11 +1522,6 @@ export namespace ScriptSearchResponse {
      * Name of the script, used in URLs and route configuration.
      */
     script_name: string;
-
-    /**
-     * Identifier.
-     */
-    script_tag: string;
 
     /**
      * Whether the environment is the default environment.
@@ -1878,7 +1878,7 @@ export namespace ScriptUpdateParams {
          * Pass information from the Dispatch Worker to the Outbound Worker through the
          * parameters.
          */
-        params?: Array<string>;
+        params?: Array<Outbound.Param>;
 
         /**
          * Outbound worker.
@@ -1887,10 +1887,22 @@ export namespace ScriptUpdateParams {
       }
 
       export namespace Outbound {
+        export interface Param {
+          /**
+           * Name of the parameter.
+           */
+          name: string;
+        }
+
         /**
          * Outbound worker.
          */
         export interface Worker {
+          /**
+           * Entrypoint to invoke on the outbound worker.
+           */
+          entrypoint?: string;
+
           /**
            * Environment of the outbound worker.
            */
@@ -1996,7 +2008,7 @@ export namespace ScriptUpdateParams {
       /**
        * JSON data to use.
        */
-      json: string;
+      json: unknown;
 
       /**
        * A JavaScript variable name for the binding.
