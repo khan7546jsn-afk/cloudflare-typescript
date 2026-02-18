@@ -1,5 +1,36 @@
 # Changelog
 
+## 6.0.0-beta.2 (2026-02-18)
+
+Full Changelog: [v6.0.0-beta.1...v6.0.0-beta.2](https://github.com/cloudflare/cloudflare-typescript/compare/v6.0.0-beta.1...v6.0.0-beta.2)
+
+### Features
+
+* feat(api): add AI Gateway Dynamic Routing endpoints ([94b9d1b](https://github.com/cloudflare/cloudflare-typescript/commit/94b9d1b7cd39b1f1f4fa617922187497fb626a76))
+* feat(fraud): public docs for fraud API ([e0ae79f](https://github.com/cloudflare/cloudflare-typescript/commit/e0ae79f9e8cb81b3edf5d69ce5dbba49cba95014))
+* refactor(terraform): restructure origin_tls_client_auth to peer subresources ([16b8e20](https://github.com/cloudflare/cloudflare-typescript/commit/16b8e209208f1f4c10ddb3ba9c71cdceba69b8ae))
+
+
+### Bug Fixes
+
+* add write ([e6638ba](https://github.com/cloudflare/cloudflare-typescript/commit/e6638ba1cde0c6745c81d759cb78372d74e4286c))
+* lint issues ([f2f7905](https://github.com/cloudflare/cloudflare-typescript/commit/f2f79057d0aeb97e8e884e4917a6dc050103ce6d))
+* node version, unset auth token var ([5a81485](https://github.com/cloudflare/cloudflare-typescript/commit/5a81485c28a9f8b7c71c5ac111b00c0661324427))
+* npm publish url and run ci ([0b5a90f](https://github.com/cloudflare/cloudflare-typescript/commit/0b5a90f52790955187d5972ef101d5432ae1fbba))
+* publish script ([e106752](https://github.com/cloudflare/cloudflare-typescript/commit/e1067522c6ab0a4d53298331c00ad7f4c877034c))
+* registry url ([82932e9](https://github.com/cloudflare/cloudflare-typescript/commit/82932e9640ee9ee7d6e5461789cc7496c27fa4e0))
+* typo ([5d30b47](https://github.com/cloudflare/cloudflare-typescript/commit/5d30b47f2f321360016f6168c487cc089c7ba3e5))
+* use npm publish and oidc ([da94040](https://github.com/cloudflare/cloudflare-typescript/commit/da94040946c9f7ef5a7ad300a6d763232b28fe86))
+
+
+### Chores
+
+* **api:** update composite API spec ([956b744](https://github.com/cloudflare/cloudflare-typescript/commit/956b744db9798f8805b4f322b48598c41bd2f5dc))
+* **api:** update composite API spec ([a41ac13](https://github.com/cloudflare/cloudflare-typescript/commit/a41ac13294285c5c107139fa7e3353b6d9cba9ca))
+* **api:** update composite API spec ([c088d7d](https://github.com/cloudflare/cloudflare-typescript/commit/c088d7d62118687893dccfb79a269e1943ccb926))
+* **internal:** codegen related update ([7ea05a7](https://github.com/cloudflare/cloudflare-typescript/commit/7ea05a73bfcba2df9398294a9808dde39f217917))
+* **internal:** codegen related update ([bb49123](https://github.com/cloudflare/cloudflare-typescript/commit/bb491236363152546626d34f1a96062021f757ab))
+
 ## 6.0.0-beta.1 (2026-01-20)
 > **Disclaimer:** Please note that v6.0.0-beta.1 is in Beta and we are still testing it for stability.
 
