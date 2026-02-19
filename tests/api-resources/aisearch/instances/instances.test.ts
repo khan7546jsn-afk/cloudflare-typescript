@@ -39,6 +39,7 @@ describe('resource instances', () => {
       chunk_size: 64,
       custom_metadata: [{ data_type: 'text', field_name: 'x' }],
       embedding_model: '@cf/qwen/qwen3-embedding-0.6b',
+      fusion_method: 'max',
       hybrid_search_enabled: true,
       max_num_results: 1,
       metadata: { created_from_aisearch_wizard: true, worker_domain: 'worker_domain' },
@@ -108,6 +109,7 @@ describe('resource instances', () => {
       chunk_size: 64,
       custom_metadata: [{ data_type: 'text', field_name: 'x' }],
       embedding_model: '@cf/qwen/qwen3-embedding-0.6b',
+      fusion_method: 'max',
       hybrid_search_enabled: true,
       max_num_results: 1,
       metadata: { created_from_aisearch_wizard: true, worker_domain: 'worker_domain' },
@@ -231,6 +233,7 @@ describe('resource instances', () => {
         retrieval: {
           context_expansion: 0,
           filters: { foo: 'bar' },
+          fusion_method: 'max',
           match_threshold: 0,
           max_num_results: 1,
           retrieval_type: 'vector',
@@ -293,6 +296,7 @@ describe('resource instances', () => {
         retrieval: {
           context_expansion: 0,
           filters: { foo: 'bar' },
+          fusion_method: 'max',
           match_threshold: 0,
           max_num_results: 1,
           retrieval_type: 'vector',

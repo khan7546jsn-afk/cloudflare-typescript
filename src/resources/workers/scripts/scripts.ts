@@ -1570,6 +1570,11 @@ export namespace ScriptUpdateParams {
    */
   export interface Metadata {
     /**
+     * Annotations for the version created by this upload.
+     */
+    annotations?: Metadata.Annotations;
+
+    /**
      * Configuration for assets within a Worker.
      */
     assets?: Metadata.Assets;
@@ -1699,6 +1704,21 @@ export namespace ScriptUpdateParams {
   }
 
   export namespace Metadata {
+    /**
+     * Annotations for the version created by this upload.
+     */
+    export interface Annotations {
+      /**
+       * Human-readable message about the version.
+       */
+      'workers/message'?: string;
+
+      /**
+       * User-provided identifier for the version.
+       */
+      'workers/tag'?: string;
+    }
+
     /**
      * Configuration for assets within a Worker.
      */
