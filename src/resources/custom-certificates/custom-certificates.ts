@@ -324,7 +324,7 @@ export interface CustomCertificateCreateParams {
    * the EU region. If there are too few data centers satisfying the policy, it will
    * be rejected. Note: The API accepts this field as either "policy" or
    * "policy_restrictions" in requests. Responses return this field as
-   * "policy_restrictions". example: "(country: US) or (region: EU)"
+   * "policy_restrictions".
    */
   policy?: string;
 
@@ -405,7 +405,7 @@ export interface CustomCertificateEditParams {
    * the EU region. If there are too few data centers satisfying the policy, it will
    * be rejected. Note: The API accepts this field as either "policy" or
    * "policy_restrictions" in requests. Responses return this field as
-   * "policy_restrictions". example: "(country: US) or (region: EU)"
+   * "policy_restrictions".
    */
   policy?: string;
 
