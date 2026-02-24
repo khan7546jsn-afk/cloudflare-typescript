@@ -6,7 +6,7 @@ import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../p
 
 export class Tokens extends APIResource {
   /**
-   * Create new tokens.
+   * Create a new tokens.
    *
    * @example
    * ```ts

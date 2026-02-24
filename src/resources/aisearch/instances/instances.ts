@@ -32,7 +32,7 @@ export class Instances extends APIResource {
   jobs: JobsAPI.Jobs = new JobsAPI.Jobs(this._client);
 
   /**
-   * Create new instances.
+   * Create a new instances.
    *
    * @example
    * ```ts
@@ -132,7 +132,8 @@ export class Instances extends APIResource {
   }
 
   /**
-   * Chat Completions
+   * Performs a chat completion request against an AI Search instance, using indexed
+   * content as context for generating responses.
    *
    * @example
    * ```ts
@@ -183,7 +184,8 @@ export class Instances extends APIResource {
   }
 
   /**
-   * Search
+   * Executes a semantic search query against an AI Search instance to find relevant
+   * indexed content.
    *
    * @example
    * ```ts
@@ -211,7 +213,7 @@ export class Instances extends APIResource {
   }
 
   /**
-   * Stats
+   * Retrieves usage statistics for AI Search instances.
    *
    * @example
    * ```ts
