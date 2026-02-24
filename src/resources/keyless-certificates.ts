@@ -7,7 +7,8 @@ import { SinglePage } from '../pagination';
 
 export class KeylessCertificates extends APIResource {
   /**
-   * Create Keyless SSL Configuration
+   * Creates a Keyless SSL configuration that allows SSL/TLS termination without
+   * exposing private keys to Cloudflare. Keys remain on your infrastructure.
    *
    * @example
    * ```ts
@@ -59,7 +60,8 @@ export class KeylessCertificates extends APIResource {
   }
 
   /**
-   * Delete Keyless SSL Configuration
+   * Removes a Keyless SSL configuration. SSL connections will no longer use the
+   * keyless server for cryptographic operations.
    *
    * @example
    * ```ts
