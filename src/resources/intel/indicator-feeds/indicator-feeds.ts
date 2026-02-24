@@ -48,7 +48,7 @@ export class IndicatorFeeds extends APIResource {
   }
 
   /**
-   * Retrieves the raw data entries in a custom threat indicator feed.
+   * Revises details for a specific custom threat indicator feed.
    *
    * @example
    * ```ts
@@ -73,7 +73,7 @@ export class IndicatorFeeds extends APIResource {
   }
 
   /**
-   * Retrieves details for a specific custom threat indicator feed.
+   * Retrieves details for all accessible custom threat indicator feeds.
    *
    * @example
    * ```ts
@@ -121,7 +121,7 @@ export class IndicatorFeeds extends APIResource {
   }
 
   /**
-   * Retrieves the raw data entries in a custom threat indicator feed.
+   * Retrieves details for a specific custom threat indicator feed.
    *
    * @example
    * ```ts
