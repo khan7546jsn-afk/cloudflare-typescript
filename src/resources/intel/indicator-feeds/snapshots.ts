@@ -5,7 +5,7 @@ import * as Core from '../../../core';
 
 export class Snapshots extends APIResource {
   /**
-   * Update indicator feed data
+   * Retrieves the raw data entries in a custom threat indicator feed.
    *
    * @example
    * ```ts
