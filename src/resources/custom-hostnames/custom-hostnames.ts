@@ -80,7 +80,8 @@ export class CustomHostnames extends APIResource {
   }
 
   /**
-   * Delete Custom Hostname (and any issued SSL certificates)
+   * Permanently deletes a custom hostname and revokes any SSL certificates that were
+   * issued for it. This action cannot be undone.
    *
    * @example
    * ```ts
@@ -131,7 +132,8 @@ export class CustomHostnames extends APIResource {
   }
 
   /**
-   * Custom Hostname Details
+   * Retrieves detailed information about a specific custom hostname, including SSL
+   * certificate status, ownership verification, and origin configuration.
    *
    * @example
    * ```ts
