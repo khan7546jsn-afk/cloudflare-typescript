@@ -6,7 +6,7 @@ import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../p
 
 export class Resources extends APIResource {
   /**
-   * Create a new share resource
+   * Adds a resource to an existing share, making it available to share recipients.
    *
    * @example
    * ```ts
