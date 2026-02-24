@@ -77,11 +77,12 @@ export class Scripts extends APIResource {
     params: ScriptUpdateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ScriptUpdateResponse> {
-    const { account_id, ...body } = params;
+    const { account_id, bindings_inherit, ...body } = params;
     return (
       this._client.put(
         `/accounts/${account_id}/workers/dispatch/namespaces/${dispatchNamespace}/scripts/${scriptName}`,
         Core.maybeMultipartFormRequestOptions({
+          query: { bindings_inherit },
           body,
           ...options,
           __multipartSyntax: 'json',
@@ -578,6 +579,13 @@ export interface ScriptUpdateParams {
    * configuration.
    */
   metadata: ScriptUpdateParams.Metadata;
+
+  /**
+   * Query param: When set to "strict", the upload will fail if any `inherit` type
+   * bindings cannot be resolved against the previous version of the script. Without
+   * this, unresolvable inherit bindings are silently dropped.
+   */
+  bindings_inherit?: 'strict';
 
   /**
    * Body param: An array of modules (often JavaScript files) comprising a Worker
