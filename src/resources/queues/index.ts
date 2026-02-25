@@ -1,13 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 export {
-  ConsumerListResponsesSinglePage,
+  ConsumersSinglePage,
   Consumers,
-  type ConsumerCreateResponse,
-  type ConsumerUpdateResponse,
-  type ConsumerListResponse,
+  type Consumer,
   type ConsumerDeleteResponse,
-  type ConsumerGetResponse,
   type ConsumerCreateParams,
   type ConsumerUpdateParams,
   type ConsumerListParams,
