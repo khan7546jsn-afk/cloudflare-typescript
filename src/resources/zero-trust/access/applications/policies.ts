@@ -1325,14 +1325,14 @@ export namespace PolicyCreateResponse {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    rdp?: ConnectionRules.Rdp;
+    rdp?: ConnectionRules.RDP;
   }
 
   export namespace ConnectionRules {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    export interface Rdp {
+    export interface RDP {
       /**
        * Clipboard formats allowed when copying from local machine to remote RDP session.
        */
@@ -1469,14 +1469,14 @@ export namespace PolicyUpdateResponse {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    rdp?: ConnectionRules.Rdp;
+    rdp?: ConnectionRules.RDP;
   }
 
   export namespace ConnectionRules {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    export interface Rdp {
+    export interface RDP {
       /**
        * Clipboard formats allowed when copying from local machine to remote RDP session.
        */
@@ -1613,14 +1613,14 @@ export namespace PolicyListResponse {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    rdp?: ConnectionRules.Rdp;
+    rdp?: ConnectionRules.RDP;
   }
 
   export namespace ConnectionRules {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    export interface Rdp {
+    export interface RDP {
       /**
        * Clipboard formats allowed when copying from local machine to remote RDP session.
        */
@@ -1764,14 +1764,14 @@ export namespace PolicyGetResponse {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    rdp?: ConnectionRules.Rdp;
+    rdp?: ConnectionRules.RDP;
   }
 
   export namespace ConnectionRules {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    export interface Rdp {
+    export interface RDP {
       /**
        * Clipboard formats allowed when copying from local machine to remote RDP session.
        */
@@ -1884,14 +1884,14 @@ export namespace PolicyCreateParams {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    rdp?: ConnectionRules.Rdp;
+    rdp?: ConnectionRules.RDP;
   }
 
   export namespace ConnectionRules {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    export interface Rdp {
+    export interface RDP {
       /**
        * Clipboard formats allowed when copying from local machine to remote RDP session.
        */
@@ -2004,14 +2004,14 @@ export namespace PolicyUpdateParams {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    rdp?: ConnectionRules.Rdp;
+    rdp?: ConnectionRules.RDP;
   }
 
   export namespace ConnectionRules {
     /**
      * The RDP-specific rules that define clipboard behavior for RDP connections.
      */
-    export interface Rdp {
+    export interface RDP {
       /**
        * Clipboard formats allowed when copying from local machine to remote RDP session.
        */
