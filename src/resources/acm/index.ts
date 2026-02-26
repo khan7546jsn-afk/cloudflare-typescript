@@ -2,6 +2,15 @@
 
 export { ACM } from './acm';
 export {
+  CustomTrustStoresV4PagePaginationArray,
+  CustomTrustStore,
+  type CustomTrustStoreDeleteResponse,
+  type CustomTrustStoreCreateParams,
+  type CustomTrustStoreListParams,
+  type CustomTrustStoreDeleteParams,
+  type CustomTrustStoreGetParams,
+} from './custom-trust-store';
+export {
   TotalTLS,
   type CertificateAuthority,
   type TotalTLSUpdateResponse,
