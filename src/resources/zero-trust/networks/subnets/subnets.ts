@@ -3,24 +3,19 @@
 import { APIResource } from '../../../../resource';
 import * as Core from '../../../../core';
 import * as CloudflareSourceAPI from './cloudflare-source';
-import {
-  CloudflareSource,
-  CloudflareSourceUpdateParams,
-  CloudflareSourceUpdateResponse,
-} from './cloudflare-source';
+import { CloudflareSource, CloudflareSourceUpdateParams } from './cloudflare-source';
 import * as WARPAPI from './warp';
 import {
+  Subnet,
+  SubnetsV4PagePaginationArray,
   WARP,
   WARPCreateParams,
-  WARPCreateResponse,
   WARPDeleteParams,
   WARPDeleteResponse,
   WARPEditParams,
-  WARPEditResponse,
   WARPGetParams,
-  WARPGetResponse,
 } from './warp';
-import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../../../pagination';
+import { type V4PagePaginationArrayParams } from '../../../../pagination';
 
 export class Subnets extends APIResource {
   warp: WARPAPI.WARP = new WARPAPI.WARP(this._client);
@@ -34,7 +29,7 @@ export class Subnets extends APIResource {
    * @example
    * ```ts
    * // Automatically fetches more pages as needed.
-   * for await (const subnetListResponse of client.zeroTrust.networks.subnets.list(
+   * for await (const subnet of client.zeroTrust.networks.subnets.list(
    *   { account_id: '699d98642c564d2e855e9661899b7252' },
    * )) {
    *   // ...
@@ -44,60 +39,14 @@ export class Subnets extends APIResource {
   list(
     params: SubnetListParams,
     options?: Core.RequestOptions,
-  ): Core.PagePromise<SubnetListResponsesV4PagePaginationArray, SubnetListResponse> {
+  ): Core.PagePromise<SubnetsV4PagePaginationArray, WARPAPI.Subnet> {
     const { account_id, ...query } = params;
     return this._client.getAPIList(
       `/accounts/${account_id}/zerotrust/subnets`,
-      SubnetListResponsesV4PagePaginationArray,
+      SubnetsV4PagePaginationArray,
       { query, ...options },
     );
   }
-}
-
-export class SubnetListResponsesV4PagePaginationArray extends V4PagePaginationArray<SubnetListResponse> {}
-
-export interface SubnetListResponse {
-  /**
-   * The UUID of the subnet.
-   */
-  id?: string;
-
-  /**
-   * An optional description of the subnet.
-   */
-  comment?: string;
-
-  /**
-   * Timestamp of when the resource was created.
-   */
-  created_at?: string;
-
-  /**
-   * Timestamp of when the resource was deleted. If `null`, the resource has not been
-   * deleted.
-   */
-  deleted_at?: string;
-
-  /**
-   * If `true`, this is the default subnet for the account. There can only be one
-   * default subnet per account.
-   */
-  is_default_network?: boolean;
-
-  /**
-   * A user-friendly name for the subnet.
-   */
-  name?: string;
-
-  /**
-   * The private IPv4 or IPv6 range defining the subnet, in CIDR notation.
-   */
-  network?: string;
-
-  /**
-   * The type of subnet.
-   */
-  subnet_type?: 'cloudflare_source' | 'warp';
 }
 
 export interface SubnetListParams extends V4PagePaginationArrayParams {
@@ -158,23 +107,16 @@ export interface SubnetListParams extends V4PagePaginationArrayParams {
   subnet_types?: 'cloudflare_source' | 'warp';
 }
 
-Subnets.SubnetListResponsesV4PagePaginationArray = SubnetListResponsesV4PagePaginationArray;
 Subnets.WARP = WARP;
 Subnets.CloudflareSource = CloudflareSource;
 
 export declare namespace Subnets {
-  export {
-    type SubnetListResponse as SubnetListResponse,
-    SubnetListResponsesV4PagePaginationArray as SubnetListResponsesV4PagePaginationArray,
-    type SubnetListParams as SubnetListParams,
-  };
+  export { type SubnetListParams as SubnetListParams };
 
   export {
     WARP as WARP,
-    type WARPCreateResponse as WARPCreateResponse,
+    type Subnet as Subnet,
     type WARPDeleteResponse as WARPDeleteResponse,
-    type WARPEditResponse as WARPEditResponse,
-    type WARPGetResponse as WARPGetResponse,
     type WARPCreateParams as WARPCreateParams,
     type WARPDeleteParams as WARPDeleteParams,
     type WARPEditParams as WARPEditParams,
@@ -183,7 +125,8 @@ export declare namespace Subnets {
 
   export {
     CloudflareSource as CloudflareSource,
-    type CloudflareSourceUpdateResponse as CloudflareSourceUpdateResponse,
     type CloudflareSourceUpdateParams as CloudflareSourceUpdateParams,
   };
 }
+
+export { SubnetsV4PagePaginationArray };
