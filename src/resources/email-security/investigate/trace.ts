@@ -5,7 +5,8 @@ import * as Core from '../../../core';
 
 export class Trace extends APIResource {
   /**
-   * Get email trace
+   * Gets the delivery trace for an email message, showing its path through email
+   * security processing.
    *
    * @example
    * ```ts

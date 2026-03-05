@@ -35,6 +35,8 @@ describe('resource custom', () => {
         enabled: true,
         skip: { files: true },
       },
+      data_classes: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'],
+      data_tags: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'],
       description: 'description',
       entries: [
         {
@@ -45,6 +47,7 @@ describe('resource custom', () => {
         },
       ],
       ocr_enabled: true,
+      sensitivity_levels: [['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e']],
       shared_entries: [{ enabled: true, entry_id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e' }],
     });
   });
@@ -76,6 +79,8 @@ describe('resource custom', () => {
           enabled: true,
           skip: { files: true },
         },
+        data_classes: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'],
+        data_tags: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'],
         description: 'description',
         entries: [
           {
@@ -87,6 +92,7 @@ describe('resource custom', () => {
           },
         ],
         ocr_enabled: true,
+        sensitivity_levels: [['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e']],
         shared_entries: [{ enabled: true, entry_id: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e' }],
       },
     );

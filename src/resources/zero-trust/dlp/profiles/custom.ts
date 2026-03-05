@@ -146,6 +146,16 @@ export interface CustomProfile {
   context_awareness?: ProfilesAPI.ContextAwareness;
 
   /**
+   * Data classes associated with this profile.
+   */
+  data_classes?: Array<string>;
+
+  /**
+   * Data tags associated with this profile.
+   */
+  data_tags?: Array<string>;
+
+  /**
    * The description of the profile.
    */
   description?: string | null;
@@ -161,6 +171,11 @@ export interface CustomProfile {
     | CustomProfile.DocumentFingerprintEntry
     | CustomProfile.WordListEntry
   >;
+
+  /**
+   * Sensitivity levels associated with this profile as (group_id, level_id) tuples.
+   */
+  sensitivity_levels?: Array<Array<string>>;
 
   shared_entries?: Array<
     | CustomProfile.CustomEntry
@@ -504,6 +519,16 @@ export interface CustomCreateParams {
   context_awareness?: ProfilesAPI.ContextAwarenessParam;
 
   /**
+   * Body param: Data class IDs to associate with the profile.
+   */
+  data_classes?: Array<string>;
+
+  /**
+   * Body param: Data tag IDs to associate with the profile.
+   */
+  data_tags?: Array<string>;
+
+  /**
    * Body param: The description of the profile.
    */
   description?: string | null;
@@ -517,6 +542,12 @@ export interface CustomCreateParams {
    * Body param
    */
   ocr_enabled?: boolean;
+
+  /**
+   * Body param: Sensitivity levels to associate with the profile as (group_id,
+   * level_id) tuples.
+   */
+  sensitivity_levels?: Array<Array<string>>;
 
   /**
    * Body param: Entries from other profiles (e.g. pre-defined Cloudflare profiles,
@@ -584,6 +615,18 @@ export interface CustomUpdateParams {
   context_awareness?: ProfilesAPI.ContextAwarenessParam;
 
   /**
+   * Body param: Data class IDs to associate with the profile. If omitted, existing
+   * associations are unchanged.
+   */
+  data_classes?: Array<string> | null;
+
+  /**
+   * Body param: Data tag IDs to associate with the profile. If omitted, existing
+   * associations are unchanged.
+   */
+  data_tags?: Array<string> | null;
+
+  /**
    * Body param: The description of the profile.
    */
   description?: string | null;
@@ -598,6 +641,12 @@ export interface CustomUpdateParams {
    * Body param
    */
   ocr_enabled?: boolean;
+
+  /**
+   * Body param: Sensitivity levels to associate with the profile. If omitted,
+   * existing associations are unchanged.
+   */
+  sensitivity_levels?: Array<Array<string>> | null;
 
   /**
    * Body param: Other entries, e.g. predefined or integration.

@@ -139,7 +139,6 @@ export class Workers extends APIResource {
       this._client.patch(`/accounts/${account_id}/workers/workers/${workerId}`, {
         body,
         ...options,
-        headers: { 'Content-Type': 'application/merge-patch+json', ...options?.headers },
       }) as Core.APIPromise<{ result: Worker }>
     )._thenUnwrap((obj) => obj.result);
   }

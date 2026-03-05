@@ -5,7 +5,8 @@ import * as Core from '../../../core';
 
 export class Preview extends APIResource {
   /**
-   * Preview for non-detection messages
+   * Generates a preview of an email message for safe viewing without executing any
+   * embedded content.
    *
    * @example
    * ```ts

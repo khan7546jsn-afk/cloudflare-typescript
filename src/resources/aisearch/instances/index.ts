@@ -24,9 +24,7 @@ export {
   ItemListResponsesV4PagePaginationArray,
   Items,
   type ItemListResponse,
-  type ItemGetResponse,
   type ItemListParams,
-  type ItemGetParams,
 } from './items';
 export {
   JobListResponsesV4PagePaginationArray,

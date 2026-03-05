@@ -90,6 +90,8 @@ export namespace GeolocationListResponse {
      * The type of the geolocation.
      */
     type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
+
+    code?: string;
   }
 
   export namespace Geolocation {
@@ -114,6 +116,8 @@ export namespace GeolocationListResponse {
        * The type of the geolocation.
        */
       type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
+
+      code?: string;
     }
 
     export namespace Parent {
@@ -136,6 +140,8 @@ export namespace GeolocationListResponse {
          * The type of the geolocation.
          */
         type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
+
+        code?: string;
       }
     }
   }
@@ -167,6 +173,8 @@ export namespace GeolocationGetResponse {
      * The type of the geolocation.
      */
     type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
+
+    code?: string;
   }
 
   export namespace Geolocation {
@@ -191,6 +199,8 @@ export namespace GeolocationGetResponse {
        * The type of the geolocation.
        */
       type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
+
+      code?: string;
     }
 
     export namespace Parent {
@@ -213,6 +223,8 @@ export namespace GeolocationGetResponse {
          * The type of the geolocation.
          */
         type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
+
+        code?: string;
       }
     }
   }
