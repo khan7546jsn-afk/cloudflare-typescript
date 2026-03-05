@@ -46,16 +46,16 @@ export class NetFlows extends APIResource {
    * ```
    */
   summaryV2(
-    dimension: 'ADM1' | 'PRODUCT',
+    dimension: 'ADM1' | 'AS' | 'LOCATION' | 'PRODUCT',
     query?: NetFlowsSummaryV2Params,
     options?: Core.RequestOptions,
   ): Core.APIPromise<NetFlowsSummaryV2Response>;
   summaryV2(
-    dimension: 'ADM1' | 'PRODUCT',
+    dimension: 'ADM1' | 'AS' | 'LOCATION' | 'PRODUCT',
     options?: Core.RequestOptions,
   ): Core.APIPromise<NetFlowsSummaryV2Response>;
   summaryV2(
-    dimension: 'ADM1' | 'PRODUCT',
+    dimension: 'ADM1' | 'AS' | 'LOCATION' | 'PRODUCT',
     query: NetFlowsSummaryV2Params | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<NetFlowsSummaryV2Response> {
@@ -107,16 +107,16 @@ export class NetFlows extends APIResource {
    * ```
    */
   timeseriesGroups(
-    dimension: 'ADM1' | 'PRODUCT',
+    dimension: 'ADM1' | 'AS' | 'LOCATION' | 'PRODUCT',
     query?: NetFlowsTimeseriesGroupsParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<NetFlowsTimeseriesGroupsResponse>;
   timeseriesGroups(
-    dimension: 'ADM1' | 'PRODUCT',
+    dimension: 'ADM1' | 'AS' | 'LOCATION' | 'PRODUCT',
     options?: Core.RequestOptions,
   ): Core.APIPromise<NetFlowsTimeseriesGroupsResponse>;
   timeseriesGroups(
-    dimension: 'ADM1' | 'PRODUCT',
+    dimension: 'ADM1' | 'AS' | 'LOCATION' | 'PRODUCT',
     query: NetFlowsTimeseriesGroupsParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
   ): Core.APIPromise<NetFlowsTimeseriesGroupsResponse> {

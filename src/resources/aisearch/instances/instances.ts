@@ -3,14 +3,7 @@
 import { APIResource } from '../../../resource';
 import * as Core from '../../../core';
 import * as ItemsAPI from './items';
-import {
-  ItemGetParams,
-  ItemGetResponse,
-  ItemListParams,
-  ItemListResponse,
-  ItemListResponsesV4PagePaginationArray,
-  Items,
-} from './items';
+import { ItemListParams, ItemListResponse, ItemListResponsesV4PagePaginationArray, Items } from './items';
 import * as JobsAPI from './jobs';
 import {
   JobCreateParams,
@@ -39,8 +32,6 @@ export class Instances extends APIResource {
    * const instance = await client.aiSearch.instances.create({
    *   account_id: 'c3dc5f0b34a14ff8e1b3ec04895e1b22',
    *   id: 'my-ai-search',
-   *   source: 'source',
-   *   type: 'r2',
    * });
    * ```
    */
@@ -250,10 +241,6 @@ export interface InstanceCreateResponse {
 
   modified_at: string;
 
-  source: string;
-
-  type: 'r2' | 'web-crawler';
-
   vectorize_name: string;
 
   ai_gateway_id?: string | null;
@@ -370,11 +357,15 @@ export interface InstanceCreateResponse {
 
   score_threshold?: number;
 
+  source?: string;
+
   source_params?: InstanceCreateResponse.SourceParams | null;
 
   status?: string;
 
   token_id?: string;
+
+  type?: 'r2' | 'web-crawler';
 }
 
 export namespace InstanceCreateResponse {
@@ -439,11 +430,38 @@ export namespace InstanceCreateResponse {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -479,6 +497,13 @@ export namespace InstanceCreateResponse {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -490,6 +515,22 @@ export namespace InstanceCreateResponse {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -512,10 +553,6 @@ export interface InstanceUpdateResponse {
   created_at: string;
 
   modified_at: string;
-
-  source: string;
-
-  type: 'r2' | 'web-crawler';
 
   vectorize_name: string;
 
@@ -633,11 +670,15 @@ export interface InstanceUpdateResponse {
 
   score_threshold?: number;
 
+  source?: string;
+
   source_params?: InstanceUpdateResponse.SourceParams | null;
 
   status?: string;
 
   token_id?: string;
+
+  type?: 'r2' | 'web-crawler';
 }
 
 export namespace InstanceUpdateResponse {
@@ -702,11 +743,38 @@ export namespace InstanceUpdateResponse {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -742,6 +810,13 @@ export namespace InstanceUpdateResponse {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -753,6 +828,22 @@ export namespace InstanceUpdateResponse {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -775,10 +866,6 @@ export interface InstanceListResponse {
   created_at: string;
 
   modified_at: string;
-
-  source: string;
-
-  type: 'r2' | 'web-crawler';
 
   vectorize_name: string;
 
@@ -896,11 +983,15 @@ export interface InstanceListResponse {
 
   score_threshold?: number;
 
+  source?: string;
+
   source_params?: InstanceListResponse.SourceParams | null;
 
   status?: string;
 
   token_id?: string;
+
+  type?: 'r2' | 'web-crawler';
 }
 
 export namespace InstanceListResponse {
@@ -965,11 +1056,38 @@ export namespace InstanceListResponse {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -1005,6 +1123,13 @@ export namespace InstanceListResponse {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -1016,6 +1141,22 @@ export namespace InstanceListResponse {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -1038,10 +1179,6 @@ export interface InstanceDeleteResponse {
   created_at: string;
 
   modified_at: string;
-
-  source: string;
-
-  type: 'r2' | 'web-crawler';
 
   vectorize_name: string;
 
@@ -1159,11 +1296,15 @@ export interface InstanceDeleteResponse {
 
   score_threshold?: number;
 
+  source?: string;
+
   source_params?: InstanceDeleteResponse.SourceParams | null;
 
   status?: string;
 
   token_id?: string;
+
+  type?: 'r2' | 'web-crawler';
 }
 
 export namespace InstanceDeleteResponse {
@@ -1228,11 +1369,38 @@ export namespace InstanceDeleteResponse {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -1268,6 +1436,13 @@ export namespace InstanceDeleteResponse {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -1279,6 +1454,22 @@ export namespace InstanceDeleteResponse {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -1369,10 +1560,6 @@ export interface InstanceReadResponse {
   created_at: string;
 
   modified_at: string;
-
-  source: string;
-
-  type: 'r2' | 'web-crawler';
 
   vectorize_name: string;
 
@@ -1490,11 +1677,15 @@ export interface InstanceReadResponse {
 
   score_threshold?: number;
 
+  source?: string;
+
   source_params?: InstanceReadResponse.SourceParams | null;
 
   status?: string;
 
   token_id?: string;
+
+  type?: 'r2' | 'web-crawler';
 }
 
 export namespace InstanceReadResponse {
@@ -1559,11 +1750,38 @@ export namespace InstanceReadResponse {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -1599,6 +1817,13 @@ export namespace InstanceReadResponse {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -1610,6 +1835,22 @@ export namespace InstanceReadResponse {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -1699,16 +1940,6 @@ export interface InstanceCreateParams {
   /**
    * Body param
    */
-  source: string;
-
-  /**
-   * Body param
-   */
-  type: 'r2' | 'web-crawler';
-
-  /**
-   * Body param
-   */
   ai_gateway_id?: string | null;
 
   /**
@@ -1743,6 +1974,16 @@ export interface InstanceCreateParams {
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
     | '';
+
+  /**
+   * Body param
+   */
+  cache?: boolean;
+
+  /**
+   * Body param
+   */
+  cache_threshold?: 'super_strict_match' | 'close_enough' | 'flexible_friend' | 'anything_goes';
 
   /**
    * Body param
@@ -1863,12 +2104,22 @@ export interface InstanceCreateParams {
   /**
    * Body param
    */
+  source?: string;
+
+  /**
+   * Body param
+   */
   source_params?: InstanceCreateParams.SourceParams | null;
 
   /**
    * Body param
    */
   token_id?: string;
+
+  /**
+   * Body param
+   */
+  type?: 'r2' | 'web-crawler';
 }
 
 export namespace InstanceCreateParams {
@@ -1933,11 +2184,38 @@ export namespace InstanceCreateParams {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -1973,6 +2251,13 @@ export namespace InstanceCreateParams {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -1984,6 +2269,22 @@ export namespace InstanceCreateParams {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -2298,11 +2599,38 @@ export namespace InstanceUpdateParams {
 
   export interface RetrievalOptions {
     /**
+     * Metadata fields to boost search results by. Each entry specifies a metadata
+     * field and an optional direction. Direction defaults to 'asc' for numeric fields
+     * and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+     * custom_metadata field.
+     */
+    boost_by?: Array<RetrievalOptions.BoostBy>;
+
+    /**
      * Controls how keyword search terms are matched. exact_match requires all terms to
      * appear (AND); fuzzy_match returns results containing any term (OR). Defaults to
      * exact_match.
      */
     keyword_match_mode?: 'exact_match' | 'fuzzy_match';
+  }
+
+  export namespace RetrievalOptions {
+    export interface BoostBy {
+      /**
+       * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+       * fields support exists/not_exists.
+       */
+      field: string;
+
+      /**
+       * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+       * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+       * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+       * for numeric fields, 'exists' for text/boolean fields.
+       */
+      direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+    }
   }
 
   export interface SourceParams {
@@ -2338,6 +2666,13 @@ export namespace InstanceUpdateParams {
 
     export namespace WebCrawler {
       export interface ParseOptions {
+        /**
+         * List of path-to-selector mappings for extracting specific content from crawled
+         * pages. Each entry pairs a URL glob pattern with a CSS selector. The first
+         * matching path wins. Only the matched HTML fragment is stored and indexed.
+         */
+        content_selector?: Array<ParseOptions.ContentSelector>;
+
         include_headers?: { [key: string]: string };
 
         include_images?: boolean;
@@ -2349,6 +2684,22 @@ export namespace InstanceUpdateParams {
         specific_sitemaps?: Array<string>;
 
         use_browser_rendering?: boolean;
+      }
+
+      export namespace ParseOptions {
+        export interface ContentSelector {
+          /**
+           * Glob pattern to match against the page URL path. Uses standard glob syntax: \*
+           * matches within a segment, \*\* crosses directories.
+           */
+          path: string;
+
+          /**
+           * CSS selector to extract content from pages matching the path pattern. Supports
+           * standard CSS selectors including class, ID, element, and attribute selectors.
+           */
+          selector: string;
+        }
       }
 
       export interface StoreOptions {
@@ -2367,6 +2718,16 @@ export interface InstanceListParams extends V4PagePaginationArrayParams {
    * Path param
    */
   account_id: string;
+
+  /**
+   * Query param: Order By Column Name
+   */
+  order_by?: 'created_at';
+
+  /**
+   * Query param: Order By Direction
+   */
+  order_by_direction?: 'asc' | 'desc';
 
   /**
    * Query param: Search by id
@@ -2498,6 +2859,14 @@ export namespace InstanceChatCompletionsParams {
     }
 
     export interface Retrieval {
+      /**
+       * Metadata fields to boost search results by. Overrides the instance-level
+       * boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for
+       * text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata
+       * field.
+       */
+      boost_by?: Array<Retrieval.BoostBy>;
+
       context_expansion?: number;
 
       filters?: { [key: string]: unknown };
@@ -2518,6 +2887,25 @@ export namespace InstanceChatCompletionsParams {
       retrieval_type?: 'vector' | 'keyword' | 'hybrid';
 
       return_on_failure?: boolean;
+    }
+
+    export namespace Retrieval {
+      export interface BoostBy {
+        /**
+         * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+         * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+         * fields support exists/not_exists.
+         */
+        field: string;
+
+        /**
+         * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+         * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+         * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+         * for numeric fields, 'exists' for text/boolean fields.
+         */
+        direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+      }
     }
   }
 }
@@ -2606,6 +2994,14 @@ export namespace InstanceSearchParams {
     }
 
     export interface Retrieval {
+      /**
+       * Metadata fields to boost search results by. Overrides the instance-level
+       * boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for
+       * text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata
+       * field.
+       */
+      boost_by?: Array<Retrieval.BoostBy>;
+
       context_expansion?: number;
 
       filters?: { [key: string]: unknown };
@@ -2626,6 +3022,25 @@ export namespace InstanceSearchParams {
       retrieval_type?: 'vector' | 'keyword' | 'hybrid';
 
       return_on_failure?: boolean;
+    }
+
+    export namespace Retrieval {
+      export interface BoostBy {
+        /**
+         * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
+         * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
+         * fields support exists/not_exists.
+         */
+        field: string;
+
+        /**
+         * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
+         * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
+         * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
+         * for numeric fields, 'exists' for text/boolean fields.
+         */
+        direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
+      }
     }
   }
 }
@@ -2664,10 +3079,8 @@ export declare namespace Instances {
   export {
     Items as Items,
     type ItemListResponse as ItemListResponse,
-    type ItemGetResponse as ItemGetResponse,
     ItemListResponsesV4PagePaginationArray as ItemListResponsesV4PagePaginationArray,
     type ItemListParams as ItemListParams,
-    type ItemGetParams as ItemGetParams,
   };
 
   export {

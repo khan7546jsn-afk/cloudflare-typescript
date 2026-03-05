@@ -489,8 +489,8 @@ export interface SinkListResponse {
    * Defines the configuration of the R2 Sink.
    */
   config?:
-    | SinkListResponse.CloudflarePipelinesR2Table
-    | SinkListResponse.CloudflarePipelinesR2DataCatalogTable;
+    | SinkListResponse.CloudflarePipelinesR2TablePublic
+    | SinkListResponse.CloudflarePipelinesR2DataCatalogTablePublic;
 
   format?: SinkListResponse.Json | SinkListResponse.Parquet;
 
@@ -498,7 +498,10 @@ export interface SinkListResponse {
 }
 
 export namespace SinkListResponse {
-  export interface CloudflarePipelinesR2Table {
+  /**
+   * R2 Sink public configuration.
+   */
+  export interface CloudflarePipelinesR2TablePublic {
     /**
      * Cloudflare Account ID for the bucket
      */
@@ -509,12 +512,10 @@ export namespace SinkListResponse {
      */
     bucket: string;
 
-    credentials: CloudflarePipelinesR2Table.Credentials;
-
     /**
      * Controls filename prefix/suffix and strategy.
      */
-    file_naming?: CloudflarePipelinesR2Table.FileNaming;
+    file_naming?: CloudflarePipelinesR2TablePublic.FileNaming;
 
     /**
      * Jurisdiction this bucket is hosted in
@@ -524,7 +525,7 @@ export namespace SinkListResponse {
     /**
      * Data-layout partitioning for sinks.
      */
-    partitioning?: CloudflarePipelinesR2Table.Partitioning;
+    partitioning?: CloudflarePipelinesR2TablePublic.Partitioning;
 
     /**
      * Subpath within the bucket to write to
@@ -534,22 +535,10 @@ export namespace SinkListResponse {
     /**
      * Rolling policy for file sinks (when & why to close a file and open a new one).
      */
-    rolling_policy?: CloudflarePipelinesR2Table.RollingPolicy;
+    rolling_policy?: CloudflarePipelinesR2TablePublic.RollingPolicy;
   }
 
-  export namespace CloudflarePipelinesR2Table {
-    export interface Credentials {
-      /**
-       * Cloudflare Account ID for the bucket
-       */
-      access_key_id: string;
-
-      /**
-       * Cloudflare Account ID for the bucket
-       */
-      secret_access_key: string;
-    }
-
+  export namespace CloudflarePipelinesR2TablePublic {
     /**
      * Controls filename prefix/suffix and strategy.
      */
@@ -602,14 +591,9 @@ export namespace SinkListResponse {
   }
 
   /**
-   * R2 Data Catalog Sink
+   * R2 Data Catalog Sink public configuration.
    */
-  export interface CloudflarePipelinesR2DataCatalogTable {
-    /**
-     * Authentication token
-     */
-    token: string;
-
+  export interface CloudflarePipelinesR2DataCatalogTablePublic {
     /**
      * Cloudflare Account ID
      */
@@ -633,10 +617,10 @@ export namespace SinkListResponse {
     /**
      * Rolling policy for file sinks (when & why to close a file and open a new one).
      */
-    rolling_policy?: CloudflarePipelinesR2DataCatalogTable.RollingPolicy;
+    rolling_policy?: CloudflarePipelinesR2DataCatalogTablePublic.RollingPolicy;
   }
 
-  export namespace CloudflarePipelinesR2DataCatalogTable {
+  export namespace CloudflarePipelinesR2DataCatalogTablePublic {
     /**
      * Rolling policy for file sinks (when & why to close a file and open a new one).
      */
@@ -854,7 +838,9 @@ export interface SinkGetResponse {
   /**
    * Defines the configuration of the R2 Sink.
    */
-  config?: SinkGetResponse.CloudflarePipelinesR2Table | SinkGetResponse.CloudflarePipelinesR2DataCatalogTable;
+  config?:
+    | SinkGetResponse.CloudflarePipelinesR2TablePublic
+    | SinkGetResponse.CloudflarePipelinesR2DataCatalogTablePublic;
 
   format?: SinkGetResponse.Json | SinkGetResponse.Parquet;
 
@@ -862,7 +848,10 @@ export interface SinkGetResponse {
 }
 
 export namespace SinkGetResponse {
-  export interface CloudflarePipelinesR2Table {
+  /**
+   * R2 Sink public configuration.
+   */
+  export interface CloudflarePipelinesR2TablePublic {
     /**
      * Cloudflare Account ID for the bucket
      */
@@ -873,12 +862,10 @@ export namespace SinkGetResponse {
      */
     bucket: string;
 
-    credentials: CloudflarePipelinesR2Table.Credentials;
-
     /**
      * Controls filename prefix/suffix and strategy.
      */
-    file_naming?: CloudflarePipelinesR2Table.FileNaming;
+    file_naming?: CloudflarePipelinesR2TablePublic.FileNaming;
 
     /**
      * Jurisdiction this bucket is hosted in
@@ -888,7 +875,7 @@ export namespace SinkGetResponse {
     /**
      * Data-layout partitioning for sinks.
      */
-    partitioning?: CloudflarePipelinesR2Table.Partitioning;
+    partitioning?: CloudflarePipelinesR2TablePublic.Partitioning;
 
     /**
      * Subpath within the bucket to write to
@@ -898,22 +885,10 @@ export namespace SinkGetResponse {
     /**
      * Rolling policy for file sinks (when & why to close a file and open a new one).
      */
-    rolling_policy?: CloudflarePipelinesR2Table.RollingPolicy;
+    rolling_policy?: CloudflarePipelinesR2TablePublic.RollingPolicy;
   }
 
-  export namespace CloudflarePipelinesR2Table {
-    export interface Credentials {
-      /**
-       * Cloudflare Account ID for the bucket
-       */
-      access_key_id: string;
-
-      /**
-       * Cloudflare Account ID for the bucket
-       */
-      secret_access_key: string;
-    }
-
+  export namespace CloudflarePipelinesR2TablePublic {
     /**
      * Controls filename prefix/suffix and strategy.
      */
@@ -966,14 +941,9 @@ export namespace SinkGetResponse {
   }
 
   /**
-   * R2 Data Catalog Sink
+   * R2 Data Catalog Sink public configuration.
    */
-  export interface CloudflarePipelinesR2DataCatalogTable {
-    /**
-     * Authentication token
-     */
-    token: string;
-
+  export interface CloudflarePipelinesR2DataCatalogTablePublic {
     /**
      * Cloudflare Account ID
      */
@@ -997,10 +967,10 @@ export namespace SinkGetResponse {
     /**
      * Rolling policy for file sinks (when & why to close a file and open a new one).
      */
-    rolling_policy?: CloudflarePipelinesR2DataCatalogTable.RollingPolicy;
+    rolling_policy?: CloudflarePipelinesR2DataCatalogTablePublic.RollingPolicy;
   }
 
-  export namespace CloudflarePipelinesR2DataCatalogTable {
+  export namespace CloudflarePipelinesR2DataCatalogTablePublic {
     /**
      * Rolling policy for file sinks (when & why to close a file and open a new one).
      */

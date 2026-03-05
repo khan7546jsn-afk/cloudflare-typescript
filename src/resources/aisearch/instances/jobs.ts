@@ -21,12 +21,12 @@ export class Jobs extends APIResource {
     params: JobCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<JobCreateResponse> {
-    const { account_id } = params;
+    const { account_id, ...body } = params;
     return (
-      this._client.post(
-        `/accounts/${account_id}/ai-search/instances/${id}/jobs`,
-        options,
-      ) as Core.APIPromise<{ result: JobCreateResponse }>
+      this._client.post(`/accounts/${account_id}/ai-search/instances/${id}/jobs`, {
+        body,
+        ...options,
+      }) as Core.APIPromise<{ result: JobCreateResponse }>
     )._thenUnwrap((obj) => obj.result);
   }
 
@@ -119,6 +119,8 @@ export interface JobCreateResponse {
 
   source: 'user' | 'schedule';
 
+  description?: string;
+
   end_reason?: string;
 
   ended_at?: string;
@@ -133,6 +135,8 @@ export interface JobListResponse {
 
   source: 'user' | 'schedule';
 
+  description?: string;
+
   end_reason?: string;
 
   ended_at?: string;
@@ -146,6 +150,8 @@ export interface JobGetResponse {
   id: string;
 
   source: 'user' | 'schedule';
+
+  description?: string;
 
   end_reason?: string;
 
@@ -171,7 +177,15 @@ export namespace JobLogsResponse {
 }
 
 export interface JobCreateParams {
+  /**
+   * Path param
+   */
   account_id: string;
+
+  /**
+   * Body param
+   */
+  description?: string;
 }
 
 export interface JobListParams extends V4PagePaginationArrayParams {

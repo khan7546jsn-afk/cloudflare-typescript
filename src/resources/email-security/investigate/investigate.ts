@@ -69,7 +69,8 @@ export class Investigate extends APIResource {
   }
 
   /**
-   * Get message details
+   * Retrieves detailed information about a specific email message, including
+   * headers, metadata, and security scan results.
    *
    * @example
    * ```ts
@@ -163,6 +164,8 @@ export interface InvestigateListResponse {
   htmltext_structure_hash?: string | null;
 
   message_id?: string | null;
+
+  post_delivery_operations?: Array<'PREVIEW' | 'QUARANTINE_RELEASE' | 'SUBMISSION' | 'MOVE'>;
 
   postfix_id_outbound?: string | null;
 
@@ -319,6 +322,8 @@ export interface InvestigateGetResponse {
 
   message_id?: string | null;
 
+  post_delivery_operations?: Array<'PREVIEW' | 'QUARANTINE_RELEASE' | 'SUBMISSION' | 'MOVE'>;
+
   postfix_id_outbound?: string | null;
 
   replyto?: string | null;
@@ -434,7 +439,8 @@ export interface InvestigateListParams extends V4PagePaginationArrayParams {
   detections_only?: boolean;
 
   /**
-   * Query param: The sender domains the search filters by.
+   * Query param: Filter by a domain found in the email: sender domain, recipient
+   * domain, or a domain in a link.
    */
   domain?: string;
 
@@ -443,6 +449,11 @@ export interface InvestigateListParams extends V4PagePaginationArrayParams {
    * provided.
    */
   end?: string;
+
+  /**
+   * Query param: Search for messages with an exact subject match.
+   */
+  exact_subject?: string;
 
   /**
    * Query param: The dispositions the search filters by.
@@ -494,12 +505,12 @@ export interface InvestigateListParams extends V4PagePaginationArrayParams {
   query?: string;
 
   /**
-   * Query param
+   * Query param: Filter by recipient. Matches either an email address or a domain.
    */
   recipient?: string;
 
   /**
-   * Query param
+   * Query param: Filter by sender. Matches either an email address or a domain.
    */
   sender?: string;
 
@@ -510,7 +521,8 @@ export interface InvestigateListParams extends V4PagePaginationArrayParams {
   start?: string;
 
   /**
-   * Query param
+   * Query param: Search for messages containing individual keywords in any order
+   * within the subject.
    */
   subject?: string;
 }

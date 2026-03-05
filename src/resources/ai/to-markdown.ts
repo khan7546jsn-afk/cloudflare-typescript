@@ -6,7 +6,7 @@ import { SinglePage } from '../../pagination';
 
 export class ToMarkdown extends APIResource {
   /**
-   * Get all converted formats supported
+   * Lists all file formats supported for conversion to Markdown.
    */
   supported(
     params: ToMarkdownSupportedParams,
@@ -21,7 +21,7 @@ export class ToMarkdown extends APIResource {
   }
 
   /**
-   * Convert Files into Markdown
+   * Converts uploaded files into Markdown format using Workers AI.
    */
   transform(
     params: ToMarkdownTransformParams,

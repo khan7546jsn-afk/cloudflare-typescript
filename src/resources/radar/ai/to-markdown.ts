@@ -6,7 +6,7 @@ import { SinglePage } from '../../../pagination';
 
 export class ToMarkdown extends APIResource {
   /**
-   * Convert Files into Markdown
+   * Converts uploaded files into Markdown format using Workers AI.
    *
    * @deprecated Use [AI > To Markdown](https://developers.cloudflare.com/api/resources/ai/subresources/to_markdown/) instead.
    */

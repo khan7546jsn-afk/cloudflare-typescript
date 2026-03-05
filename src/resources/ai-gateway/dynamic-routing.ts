@@ -298,8 +298,6 @@ export class DynamicRouting extends APIResource {
 export interface DynamicRoutingCreateResponse {
   id: string;
 
-  account_tag: string;
-
   created_at: string;
 
   deployment: DynamicRoutingCreateResponse.Deployment;
@@ -949,8 +947,6 @@ export namespace DynamicRoutingListResponse {
 export interface DynamicRoutingDeleteResponse {
   id: string;
 
-  account_tag: string;
-
   created_at: string;
 
   elements: Array<
@@ -1129,8 +1125,6 @@ export namespace DynamicRoutingDeleteResponse {
 
 export interface DynamicRoutingCreateDeploymentResponse {
   id: string;
-
-  account_tag: string;
 
   created_at: string;
 
@@ -1311,8 +1305,6 @@ export namespace DynamicRoutingCreateDeploymentResponse {
 export interface DynamicRoutingCreateVersionResponse {
   id: string;
 
-  account_tag: string;
-
   created_at: string;
 
   elements: Array<
@@ -1491,8 +1483,6 @@ export namespace DynamicRoutingCreateVersionResponse {
 
 export interface DynamicRoutingGetResponse {
   id: string;
-
-  account_tag: string;
 
   created_at: string;
 
@@ -1698,8 +1688,6 @@ export namespace DynamicRoutingGetResponse {
 
 export interface DynamicRoutingGetVersionResponse {
   id: string;
-
-  account_tag: string;
 
   active: 'true' | 'false';
 

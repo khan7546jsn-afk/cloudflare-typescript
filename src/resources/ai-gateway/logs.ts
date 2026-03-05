@@ -56,7 +56,7 @@ export class Logs extends APIResource {
   }
 
   /**
-   * Patch Gateway Log
+   * Updates metadata for an AI Gateway log entry.
    *
    * @example
    * ```ts
@@ -83,7 +83,7 @@ export class Logs extends APIResource {
   }
 
   /**
-   * Get Gateway Log Detail
+   * Retrieves detailed information for a specific AI Gateway log entry.
    *
    * @example
    * ```ts
@@ -110,7 +110,7 @@ export class Logs extends APIResource {
   }
 
   /**
-   * Get Gateway Log Request
+   * Retrieves the original request payload for an AI Gateway log entry.
    *
    * @example
    * ```ts
@@ -135,7 +135,7 @@ export class Logs extends APIResource {
   }
 
   /**
-   * Get Gateway Log Response
+   * Retrieves the response payload for an AI Gateway log entry.
    *
    * @example
    * ```ts

@@ -101,7 +101,7 @@ export class AIGateway extends APIResource {
   urls: URLsAPI.URLs = new URLsAPI.URLs(this._client);
 
   /**
-   * Create a new Gateway
+   * Creates a new AI Gateway.
    *
    * @example
    * ```ts
@@ -131,7 +131,7 @@ export class AIGateway extends APIResource {
   }
 
   /**
-   * Update a Gateway
+   * Updates an existing AI Gateway dataset.
    *
    * @example
    * ```ts
@@ -164,7 +164,7 @@ export class AIGateway extends APIResource {
   }
 
   /**
-   * List Gateways
+   * Lists all AI Gateway evaluator types configured for the account.
    *
    * @example
    * ```ts
@@ -189,7 +189,7 @@ export class AIGateway extends APIResource {
   }
 
   /**
-   * Delete a Gateway
+   * Deletes an AI Gateway dataset.
    *
    * @example
    * ```ts
@@ -213,7 +213,7 @@ export class AIGateway extends APIResource {
   }
 
   /**
-   * Fetch a Gateway
+   * Retrieves details for a specific AI Gateway dataset.
    *
    * @example
    * ```ts
@@ -244,10 +244,6 @@ export interface AIGatewayCreateResponse {
    */
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cache_invalidate_on_update: boolean;
 
   cache_ttl: number | null;
@@ -255,8 +251,6 @@ export interface AIGatewayCreateResponse {
   collect_logs: boolean;
 
   created_at: string;
-
-  internal_id: string;
 
   modified_at: string;
 
@@ -285,6 +279,11 @@ export interface AIGatewayCreateResponse {
   store_id?: string | null;
 
   stripe?: AIGatewayCreateResponse.Stripe | null;
+
+  /**
+   * Controls how Workers AI inference calls routed through this gateway are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   zdr?: boolean;
 }
@@ -324,6 +323,8 @@ export namespace AIGatewayCreateResponse {
     headers: { [key: string]: string };
 
     url: string;
+
+    content_type?: 'json' | 'protobuf';
   }
 
   export interface Stripe {
@@ -345,10 +346,6 @@ export interface AIGatewayUpdateResponse {
    */
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cache_invalidate_on_update: boolean;
 
   cache_ttl: number | null;
@@ -356,8 +353,6 @@ export interface AIGatewayUpdateResponse {
   collect_logs: boolean;
 
   created_at: string;
-
-  internal_id: string;
 
   modified_at: string;
 
@@ -386,6 +381,11 @@ export interface AIGatewayUpdateResponse {
   store_id?: string | null;
 
   stripe?: AIGatewayUpdateResponse.Stripe | null;
+
+  /**
+   * Controls how Workers AI inference calls routed through this gateway are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   zdr?: boolean;
 }
@@ -425,6 +425,8 @@ export namespace AIGatewayUpdateResponse {
     headers: { [key: string]: string };
 
     url: string;
+
+    content_type?: 'json' | 'protobuf';
   }
 
   export interface Stripe {
@@ -446,10 +448,6 @@ export interface AIGatewayListResponse {
    */
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cache_invalidate_on_update: boolean;
 
   cache_ttl: number | null;
@@ -457,8 +455,6 @@ export interface AIGatewayListResponse {
   collect_logs: boolean;
 
   created_at: string;
-
-  internal_id: string;
 
   modified_at: string;
 
@@ -487,6 +483,11 @@ export interface AIGatewayListResponse {
   store_id?: string | null;
 
   stripe?: AIGatewayListResponse.Stripe | null;
+
+  /**
+   * Controls how Workers AI inference calls routed through this gateway are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   zdr?: boolean;
 }
@@ -526,6 +527,8 @@ export namespace AIGatewayListResponse {
     headers: { [key: string]: string };
 
     url: string;
+
+    content_type?: 'json' | 'protobuf';
   }
 
   export interface Stripe {
@@ -547,10 +550,6 @@ export interface AIGatewayDeleteResponse {
    */
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cache_invalidate_on_update: boolean;
 
   cache_ttl: number | null;
@@ -558,8 +557,6 @@ export interface AIGatewayDeleteResponse {
   collect_logs: boolean;
 
   created_at: string;
-
-  internal_id: string;
 
   modified_at: string;
 
@@ -588,6 +585,11 @@ export interface AIGatewayDeleteResponse {
   store_id?: string | null;
 
   stripe?: AIGatewayDeleteResponse.Stripe | null;
+
+  /**
+   * Controls how Workers AI inference calls routed through this gateway are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   zdr?: boolean;
 }
@@ -627,6 +629,8 @@ export namespace AIGatewayDeleteResponse {
     headers: { [key: string]: string };
 
     url: string;
+
+    content_type?: 'json' | 'protobuf';
   }
 
   export interface Stripe {
@@ -648,10 +652,6 @@ export interface AIGatewayGetResponse {
    */
   id: string;
 
-  account_id: string;
-
-  account_tag: string;
-
   cache_invalidate_on_update: boolean;
 
   cache_ttl: number | null;
@@ -659,8 +659,6 @@ export interface AIGatewayGetResponse {
   collect_logs: boolean;
 
   created_at: string;
-
-  internal_id: string;
 
   modified_at: string;
 
@@ -689,6 +687,11 @@ export interface AIGatewayGetResponse {
   store_id?: string | null;
 
   stripe?: AIGatewayGetResponse.Stripe | null;
+
+  /**
+   * Controls how Workers AI inference calls routed through this gateway are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   zdr?: boolean;
 }
@@ -728,6 +731,8 @@ export namespace AIGatewayGetResponse {
     headers: { [key: string]: string };
 
     url: string;
+
+    content_type?: 'json' | 'protobuf';
   }
 
   export interface Stripe {
@@ -792,11 +797,6 @@ export interface AIGatewayCreateParams {
   /**
    * Body param
    */
-  is_default?: boolean;
-
-  /**
-   * Body param
-   */
   log_management?: number | null;
 
   /**
@@ -813,6 +813,12 @@ export interface AIGatewayCreateParams {
    * Body param
    */
   logpush_public_key?: string | null;
+
+  /**
+   * Body param: Controls how Workers AI inference calls routed through this gateway
+   * are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   /**
    * Body param
@@ -869,11 +875,6 @@ export interface AIGatewayUpdateParams {
   /**
    * Body param
    */
-  is_default?: boolean;
-
-  /**
-   * Body param
-   */
   log_management?: number | null;
 
   /**
@@ -905,6 +906,12 @@ export interface AIGatewayUpdateParams {
    * Body param
    */
   stripe?: AIGatewayUpdateParams.Stripe | null;
+
+  /**
+   * Body param: Controls how Workers AI inference calls routed through this gateway
+   * are billed
+   */
+  workers_ai_billing_mode?: 'postpaid' | 'unified';
 
   /**
    * Body param
@@ -947,6 +954,8 @@ export namespace AIGatewayUpdateParams {
     headers: { [key: string]: string };
 
     url: string;
+
+    content_type?: 'json' | 'protobuf';
   }
 
   export interface Stripe {

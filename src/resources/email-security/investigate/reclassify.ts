@@ -5,7 +5,8 @@ import * as Core from '../../../core';
 
 export class Reclassify extends APIResource {
   /**
-   * Change email classfication
+   * Submits an email message for reclassification, updating its threat assessment
+   * based on new analysis.
    *
    * @example
    * ```ts
