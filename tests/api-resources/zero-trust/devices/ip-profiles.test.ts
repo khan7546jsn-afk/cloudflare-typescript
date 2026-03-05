@@ -10,7 +10,8 @@ const client = new Cloudflare({
 });
 
 describe('resource ipProfiles', () => {
-  test('create: only required params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('create: only required params', async () => {
     const responsePromise = client.zeroTrust.devices.ipProfiles.create({
       account_id: 'account_id',
       match: 'identity.email == "test@cloudflare.com"',
@@ -27,7 +28,8 @@ describe('resource ipProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('create: required and optional params', async () => {
     const response = await client.zeroTrust.devices.ipProfiles.create({
       account_id: 'account_id',
       match: 'identity.email == "test@cloudflare.com"',
@@ -39,7 +41,8 @@ describe('resource ipProfiles', () => {
     });
   });
 
-  test('update: only required params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('update: only required params', async () => {
     const responsePromise = client.zeroTrust.devices.ipProfiles.update('profile_id', {
       account_id: 'account_id',
     });
@@ -52,7 +55,8 @@ describe('resource ipProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('update: required and optional params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('update: required and optional params', async () => {
     const response = await client.zeroTrust.devices.ipProfiles.update('profile_id', {
       account_id: 'account_id',
       description: 'example comment',
@@ -64,7 +68,8 @@ describe('resource ipProfiles', () => {
     });
   });
 
-  test('list: only required params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('list: only required params', async () => {
     const responsePromise = client.zeroTrust.devices.ipProfiles.list({ account_id: 'account_id' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -75,14 +80,16 @@ describe('resource ipProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('list: required and optional params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('list: required and optional params', async () => {
     const response = await client.zeroTrust.devices.ipProfiles.list({
       account_id: 'account_id',
       per_page: 1,
     });
   });
 
-  test('delete: only required params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('delete: only required params', async () => {
     const responsePromise = client.zeroTrust.devices.ipProfiles.delete('profile_id', {
       account_id: 'account_id',
     });
@@ -95,13 +102,15 @@ describe('resource ipProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('delete: required and optional params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('delete: required and optional params', async () => {
     const response = await client.zeroTrust.devices.ipProfiles.delete('profile_id', {
       account_id: 'account_id',
     });
   });
 
-  test('get: only required params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('get: only required params', async () => {
     const responsePromise = client.zeroTrust.devices.ipProfiles.get('profile_id', {
       account_id: 'account_id',
     });
@@ -114,7 +123,8 @@ describe('resource ipProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('get: required and optional params', async () => {
+  // 401 Unauthorized: Prism doesnt handle api tokens
+  test.skip('get: required and optional params', async () => {
     const response = await client.zeroTrust.devices.ipProfiles.get('profile_id', {
       account_id: 'account_id',
     });
