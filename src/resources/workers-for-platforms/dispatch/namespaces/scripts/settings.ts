@@ -63,6 +63,11 @@ export class Settings extends APIResource {
   }
 }
 
+/**
+ * Script and version settings for Workers for Platforms namespace scripts. Same as
+ * script-and-version-settings-item but without annotations, which are not
+ * supported for namespace scripts.
+ */
 export interface SettingEditResponse {
   /**
    * List of bindings attached to a Worker. You can find more about bindings on our
@@ -99,6 +104,7 @@ export interface SettingEditResponse {
     | SettingEditResponse.WorkersBindingKindSecretKey
     | SettingEditResponse.WorkersBindingKindWorkflow
     | SettingEditResponse.WorkersBindingKindWasmModule
+    | SettingEditResponse.WorkersBindingKindVPCService
   >;
 
   /**
@@ -335,6 +341,11 @@ export namespace SettingEditResponse {
     class_name?: string;
 
     /**
+     * The dispatch namespace the Durable Object script belongs to.
+     */
+    dispatch_namespace?: string;
+
+    /**
      * The environment of the script_name to bind to.
      */
     environment?: string;
@@ -568,7 +579,7 @@ export namespace SettingEditResponse {
      * [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
      * of the R2 bucket.
      */
-    jurisdiction?: 'eu' | 'fedramp';
+    jurisdiction?: 'eu' | 'fedramp' | 'fedramp-high';
   }
 
   export interface WorkersBindingKindSecretText {
@@ -625,6 +636,11 @@ export namespace SettingEditResponse {
      * The kind of resource that the binding provides.
      */
     type: 'service';
+
+    /**
+     * Entrypoint to invoke on the target Worker.
+     */
+    entrypoint?: string;
 
     /**
      * Optional environment if the Worker utilizes one.
@@ -778,6 +794,23 @@ export namespace SettingEditResponse {
      * @deprecated The kind of resource that the binding provides.
      */
     type: 'wasm_module';
+  }
+
+  export interface WorkersBindingKindVPCService {
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * Identifier of the VPC service to bind to.
+     */
+    service_id: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'vpc_service';
   }
 
   /**
@@ -946,6 +979,11 @@ export namespace SettingEditResponse {
   }
 }
 
+/**
+ * Script and version settings for Workers for Platforms namespace scripts. Same as
+ * script-and-version-settings-item but without annotations, which are not
+ * supported for namespace scripts.
+ */
 export interface SettingGetResponse {
   /**
    * List of bindings attached to a Worker. You can find more about bindings on our
@@ -982,6 +1020,7 @@ export interface SettingGetResponse {
     | SettingGetResponse.WorkersBindingKindSecretKey
     | SettingGetResponse.WorkersBindingKindWorkflow
     | SettingGetResponse.WorkersBindingKindWasmModule
+    | SettingGetResponse.WorkersBindingKindVPCService
   >;
 
   /**
@@ -1218,6 +1257,11 @@ export namespace SettingGetResponse {
     class_name?: string;
 
     /**
+     * The dispatch namespace the Durable Object script belongs to.
+     */
+    dispatch_namespace?: string;
+
+    /**
      * The environment of the script_name to bind to.
      */
     environment?: string;
@@ -1451,7 +1495,7 @@ export namespace SettingGetResponse {
      * [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
      * of the R2 bucket.
      */
-    jurisdiction?: 'eu' | 'fedramp';
+    jurisdiction?: 'eu' | 'fedramp' | 'fedramp-high';
   }
 
   export interface WorkersBindingKindSecretText {
@@ -1508,6 +1552,11 @@ export namespace SettingGetResponse {
      * The kind of resource that the binding provides.
      */
     type: 'service';
+
+    /**
+     * Entrypoint to invoke on the target Worker.
+     */
+    entrypoint?: string;
 
     /**
      * Optional environment if the Worker utilizes one.
@@ -1661,6 +1710,23 @@ export namespace SettingGetResponse {
      * @deprecated The kind of resource that the binding provides.
      */
     type: 'wasm_module';
+  }
+
+  export interface WorkersBindingKindVPCService {
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * Identifier of the VPC service to bind to.
+     */
+    service_id: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'vpc_service';
   }
 
   /**
@@ -1836,12 +1902,19 @@ export interface SettingEditParams {
   account_id: string;
 
   /**
-   * Body param
+   * Body param: Script and version settings for Workers for Platforms namespace
+   * scripts. Same as script-and-version-settings-item but without annotations, which
+   * are not supported for namespace scripts.
    */
   settings?: SettingEditParams.Settings;
 }
 
 export namespace SettingEditParams {
+  /**
+   * Script and version settings for Workers for Platforms namespace scripts. Same as
+   * script-and-version-settings-item but without annotations, which are not
+   * supported for namespace scripts.
+   */
   export interface Settings {
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our
@@ -1878,6 +1951,7 @@ export namespace SettingEditParams {
       | Settings.WorkersBindingKindSecretKey
       | Settings.WorkersBindingKindWorkflow
       | Settings.WorkersBindingKindWasmModule
+      | Settings.WorkersBindingKindVPCService
     >;
 
     /**
@@ -2119,6 +2193,11 @@ export namespace SettingEditParams {
       class_name?: string;
 
       /**
+       * The dispatch namespace the Durable Object script belongs to.
+       */
+      dispatch_namespace?: string;
+
+      /**
        * The environment of the script_name to bind to.
        */
       environment?: string;
@@ -2352,7 +2431,7 @@ export namespace SettingEditParams {
        * [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions)
        * of the R2 bucket.
        */
-      jurisdiction?: 'eu' | 'fedramp';
+      jurisdiction?: 'eu' | 'fedramp' | 'fedramp-high';
     }
 
     export interface WorkersBindingKindSecretText {
@@ -2414,6 +2493,11 @@ export namespace SettingEditParams {
        * The kind of resource that the binding provides.
        */
       type: 'service';
+
+      /**
+       * Entrypoint to invoke on the target Worker.
+       */
+      entrypoint?: string;
 
       /**
        * Optional environment if the Worker utilizes one.
@@ -2579,6 +2663,23 @@ export namespace SettingEditParams {
        * @deprecated The kind of resource that the binding provides.
        */
       type: 'wasm_module';
+    }
+
+    export interface WorkersBindingKindVPCService {
+      /**
+       * A JavaScript variable name for the binding.
+       */
+      name: string;
+
+      /**
+       * Identifier of the VPC service to bind to.
+       */
+      service_id: string;
+
+      /**
+       * The kind of resource that the binding provides.
+       */
+      type: 'vpc_service';
     }
 
     /**
