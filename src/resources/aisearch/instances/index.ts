@@ -20,12 +20,7 @@ export {
   type InstanceSearchParams,
   type InstanceStatsParams,
 } from './instances';
-export {
-  ItemListResponsesV4PagePaginationArray,
-  Items,
-  type ItemListResponse,
-  type ItemListParams,
-} from './items';
+export { Items } from './items';
 export {
   JobListResponsesV4PagePaginationArray,
   Jobs,
