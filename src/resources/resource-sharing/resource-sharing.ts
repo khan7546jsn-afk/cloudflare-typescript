@@ -288,7 +288,6 @@ export namespace ResourceSharingCreateResponse {
      */
     resource_type:
       | 'custom-ruleset'
-      | 'widget'
       | 'gateway-policy'
       | 'gateway-destination-ip'
       | 'gateway-block-page-settings'
@@ -416,7 +415,6 @@ export namespace ResourceSharingUpdateResponse {
      */
     resource_type:
       | 'custom-ruleset'
-      | 'widget'
       | 'gateway-policy'
       | 'gateway-destination-ip'
       | 'gateway-block-page-settings'
@@ -544,7 +542,6 @@ export namespace ResourceSharingListResponse {
      */
     resource_type:
       | 'custom-ruleset'
-      | 'widget'
       | 'gateway-policy'
       | 'gateway-destination-ip'
       | 'gateway-block-page-settings'
@@ -672,7 +669,6 @@ export namespace ResourceSharingDeleteResponse {
      */
     resource_type:
       | 'custom-ruleset'
-      | 'widget'
       | 'gateway-policy'
       | 'gateway-destination-ip'
       | 'gateway-block-page-settings'
@@ -800,7 +796,6 @@ export namespace ResourceSharingGetResponse {
      */
     resource_type:
       | 'custom-ruleset'
-      | 'widget'
       | 'gateway-policy'
       | 'gateway-destination-ip'
       | 'gateway-block-page-settings'
@@ -877,7 +872,6 @@ export namespace ResourceSharingCreateParams {
      */
     resource_type:
       | 'custom-ruleset'
-      | 'widget'
       | 'gateway-policy'
       | 'gateway-destination-ip'
       | 'gateway-block-page-settings'
@@ -933,7 +927,6 @@ export interface ResourceSharingListParams extends V4PagePaginationArrayParams {
    */
   resource_types?: Array<
     | 'custom-ruleset'
-    | 'widget'
     | 'gateway-policy'
     | 'gateway-destination-ip'
     | 'gateway-block-page-settings'
