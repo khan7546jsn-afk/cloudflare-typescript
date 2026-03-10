@@ -69,6 +69,7 @@ import { DurableObjects } from './resources/durable-objects/durable-objects';
 import { EmailRouting } from './resources/email-routing/email-routing';
 import { EmailSecurity } from './resources/email-security/email-security';
 import { Firewall } from './resources/firewall/firewall';
+import { GoogleTagGateway } from './resources/google-tag-gateway/google-tag-gateway';
 import { Healthchecks } from './resources/healthchecks/healthchecks';
 import { Hostnames } from './resources/hostnames/hostnames';
 import { HyperdriveResource } from './resources/hyperdrive/hyperdrive';
@@ -339,6 +340,7 @@ export class Cloudflare extends Core.APIClient {
   botManagement: API.BotManagement = new API.BotManagement(this);
   fraud: API.Fraud = new API.Fraud(this);
   originPostQuantumEncryption: API.OriginPostQuantumEncryption = new API.OriginPostQuantumEncryption(this);
+  googleTagGateway: API.GoogleTagGateway = new API.GoogleTagGateway(this);
   zaraz: API.Zaraz = new API.Zaraz(this);
   speed: API.Speed = new API.Speed(this);
   dcvDelegation: API.DCVDelegation = new API.DCVDelegation(this);
@@ -559,6 +561,7 @@ Cloudflare.Radar = Radar;
 Cloudflare.BotManagement = BotManagement;
 Cloudflare.Fraud = Fraud;
 Cloudflare.OriginPostQuantumEncryption = OriginPostQuantumEncryption;
+Cloudflare.GoogleTagGateway = GoogleTagGateway;
 Cloudflare.Zaraz = Zaraz;
 Cloudflare.Speed = Speed;
 Cloudflare.DCVDelegation = DCVDelegation;
@@ -773,6 +776,8 @@ export declare namespace Cloudflare {
   export { Fraud as Fraud };
 
   export { OriginPostQuantumEncryption as OriginPostQuantumEncryption };
+
+  export { GoogleTagGateway as GoogleTagGateway };
 
   export { Zaraz as Zaraz };
 
