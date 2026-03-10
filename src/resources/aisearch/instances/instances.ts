@@ -241,8 +241,6 @@ export interface InstanceCreateResponse {
 
   modified_at: string;
 
-  vectorize_name: string;
-
   ai_gateway_id?: string | null;
 
   ai_search_model?:
@@ -370,7 +368,7 @@ export interface InstanceCreateResponse {
 
 export namespace InstanceCreateResponse {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -449,8 +447,8 @@ export namespace InstanceCreateResponse {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -458,7 +456,7 @@ export namespace InstanceCreateResponse {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -567,8 +565,6 @@ export interface InstanceUpdateResponse {
   created_at: string;
 
   modified_at: string;
-
-  vectorize_name: string;
 
   ai_gateway_id?: string | null;
 
@@ -697,7 +693,7 @@ export interface InstanceUpdateResponse {
 
 export namespace InstanceUpdateResponse {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -776,8 +772,8 @@ export namespace InstanceUpdateResponse {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -785,7 +781,7 @@ export namespace InstanceUpdateResponse {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -894,8 +890,6 @@ export interface InstanceListResponse {
   created_at: string;
 
   modified_at: string;
-
-  vectorize_name: string;
 
   ai_gateway_id?: string | null;
 
@@ -1024,7 +1018,7 @@ export interface InstanceListResponse {
 
 export namespace InstanceListResponse {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -1103,8 +1097,8 @@ export namespace InstanceListResponse {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -1112,7 +1106,7 @@ export namespace InstanceListResponse {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -1221,8 +1215,6 @@ export interface InstanceDeleteResponse {
   created_at: string;
 
   modified_at: string;
-
-  vectorize_name: string;
 
   ai_gateway_id?: string | null;
 
@@ -1351,7 +1343,7 @@ export interface InstanceDeleteResponse {
 
 export namespace InstanceDeleteResponse {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -1430,8 +1422,8 @@ export namespace InstanceDeleteResponse {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -1439,7 +1431,7 @@ export namespace InstanceDeleteResponse {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -1617,8 +1609,6 @@ export interface InstanceReadResponse {
 
   modified_at: string;
 
-  vectorize_name: string;
-
   ai_gateway_id?: string | null;
 
   ai_search_model?:
@@ -1746,7 +1736,7 @@ export interface InstanceReadResponse {
 
 export namespace InstanceReadResponse {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -1825,8 +1815,8 @@ export namespace InstanceReadResponse {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -1834,7 +1824,7 @@ export namespace InstanceReadResponse {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -2194,7 +2184,7 @@ export interface InstanceCreateParams {
 
 export namespace InstanceCreateParams {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -2273,8 +2263,8 @@ export namespace InstanceCreateParams {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -2282,7 +2272,7 @@ export namespace InstanceCreateParams {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -2623,7 +2613,7 @@ export interface InstanceUpdateParams {
 
 export namespace InstanceUpdateParams {
   export interface CustomMetadata {
-    data_type: 'text' | 'number' | 'boolean';
+    data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
   }
@@ -2702,8 +2692,8 @@ export namespace InstanceUpdateParams {
     export interface BoostBy {
       /**
        * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-       * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-       * fields support exists/not_exists.
+       * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+       * text/boolean fields support exists/not_exists.
        */
       field: string;
 
@@ -2711,7 +2701,7 @@ export namespace InstanceUpdateParams {
        * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
        * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
        * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-       * for numeric fields, 'exists' for text/boolean fields.
+       * for numeric/datetime fields, 'exists' for text/boolean fields.
        */
       direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
     }
@@ -2959,9 +2949,9 @@ export namespace InstanceChatCompletionsParams {
     export interface Retrieval {
       /**
        * Metadata fields to boost search results by. Overrides the instance-level
-       * boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for
-       * text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata
-       * field.
+       * boost_by config. Direction defaults to 'asc' for numeric/datetime fields,
+       * 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+       * custom_metadata field.
        */
       boost_by?: Array<Retrieval.BoostBy>;
 
@@ -2991,8 +2981,8 @@ export namespace InstanceChatCompletionsParams {
       export interface BoostBy {
         /**
          * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-         * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-         * fields support exists/not_exists.
+         * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+         * text/boolean fields support exists/not_exists.
          */
         field: string;
 
@@ -3000,7 +2990,7 @@ export namespace InstanceChatCompletionsParams {
          * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
          * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
          * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-         * for numeric fields, 'exists' for text/boolean fields.
+         * for numeric/datetime fields, 'exists' for text/boolean fields.
          */
         direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
       }
@@ -3094,9 +3084,9 @@ export namespace InstanceSearchParams {
     export interface Retrieval {
       /**
        * Metadata fields to boost search results by. Overrides the instance-level
-       * boost_by config. Direction defaults to 'asc' for numeric fields, 'exists' for
-       * text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata
-       * field.
+       * boost_by config. Direction defaults to 'asc' for numeric/datetime fields,
+       * 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined
+       * custom_metadata field.
        */
       boost_by?: Array<Retrieval.BoostBy>;
 
@@ -3126,8 +3116,8 @@ export namespace InstanceSearchParams {
       export interface BoostBy {
         /**
          * Metadata field name to boost by. Use 'timestamp' for document freshness, or any
-         * custom_metadata field. Numeric fields support asc/desc directions; text/boolean
-         * fields support exists/not_exists.
+         * custom_metadata field. Numeric and datetime fields support asc/desc directions;
+         * text/boolean fields support exists/not_exists.
          */
         field: string;
 
@@ -3135,7 +3125,7 @@ export namespace InstanceSearchParams {
          * Boost direction. 'desc' = higher values rank higher (e.g. newer timestamps).
          * 'asc' = lower values rank higher. 'exists' = boost chunks that have the field.
          * 'not_exists' = boost chunks that lack the field. Optional ��� defaults to 'asc'
-         * for numeric fields, 'exists' for text/boolean fields.
+         * for numeric/datetime fields, 'exists' for text/boolean fields.
          */
         direction?: 'asc' | 'desc' | 'exists' | 'not_exists';
       }
