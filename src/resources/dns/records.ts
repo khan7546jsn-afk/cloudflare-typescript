@@ -393,6 +393,11 @@ export interface ARecord {
   content?: string;
 
   /**
+   * Enables private network routing to the origin.
+   */
+  private_routing?: boolean;
+
+  /**
    * Whether the record is receiving the performance and security benefits of
    * Cloudflare.
    */
@@ -460,6 +465,11 @@ export interface ARecordParam {
    * A valid IPv4 address.
    */
   content?: string;
+
+  /**
+   * Enables private network routing to the origin.
+   */
+  private_routing?: boolean;
 
   /**
    * Whether the record is receiving the performance and security benefits of
@@ -531,6 +541,11 @@ export interface AAAARecord {
   content?: string;
 
   /**
+   * Enables private network routing to the origin.
+   */
+  private_routing?: boolean;
+
+  /**
    * Whether the record is receiving the performance and security benefits of
    * Cloudflare.
    */
@@ -598,6 +613,11 @@ export interface AAAARecordParam {
    * A valid IPv6 address.
    */
   content?: string;
+
+  /**
+   * Enables private network routing to the origin.
+   */
+  private_routing?: boolean;
 
   /**
    * Whether the record is receiving the performance and security benefits of
@@ -6032,6 +6052,11 @@ export declare namespace RecordCreateParams {
     content?: string;
 
     /**
+     * Body param: Enables private network routing to the origin.
+     */
+    private_routing?: boolean;
+
+    /**
      * Body param: Whether the record is receiving the performance and security
      * benefits of Cloudflare.
      */
@@ -6105,6 +6130,11 @@ export declare namespace RecordCreateParams {
      * Body param: A valid IPv6 address.
      */
     content?: string;
+
+    /**
+     * Body param: Enables private network routing to the origin.
+     */
+    private_routing?: boolean;
 
     /**
      * Body param: Whether the record is receiving the performance and security
@@ -8004,6 +8034,11 @@ export declare namespace RecordUpdateParams {
     content?: string;
 
     /**
+     * Body param: Enables private network routing to the origin.
+     */
+    private_routing?: boolean;
+
+    /**
      * Body param: Whether the record is receiving the performance and security
      * benefits of Cloudflare.
      */
@@ -8077,6 +8112,11 @@ export declare namespace RecordUpdateParams {
      * Body param: A valid IPv6 address.
      */
     content?: string;
+
+    /**
+     * Body param: Enables private network routing to the origin.
+     */
+    private_routing?: boolean;
 
     /**
      * Body param: Whether the record is receiving the performance and security
@@ -10325,6 +10365,11 @@ export declare namespace RecordEditParams {
     content?: string;
 
     /**
+     * Body param: Enables private network routing to the origin.
+     */
+    private_routing?: boolean;
+
+    /**
      * Body param: Whether the record is receiving the performance and security
      * benefits of Cloudflare.
      */
@@ -10398,6 +10443,11 @@ export declare namespace RecordEditParams {
      * Body param: A valid IPv6 address.
      */
     content?: string;
+
+    /**
+     * Body param: Enables private network routing to the origin.
+     */
+    private_routing?: boolean;
 
     /**
      * Body param: Whether the record is receiving the performance and security
