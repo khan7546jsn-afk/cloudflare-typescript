@@ -19,7 +19,8 @@ export class Insights extends APIResource {
   type: TypeAPI.Type = new TypeAPI.Type(this._client);
 
   /**
-   * Retrieves Security Center Insights
+   * Lists all Security Center insights for the account or zone, showing security
+   * findings and recommendations.
    */
   list(
     params?: InsightListParams,
@@ -60,7 +61,8 @@ export class Insights extends APIResource {
   }
 
   /**
-   * Archives Security Center Insight
+   * Archives a Security Center insight for an account or zone, removing it from the
+   * active insights list while preserving historical data.
    */
   dismiss(
     issueId: string,
