@@ -8,7 +8,7 @@ import { CloudflareError } from '../../../error';
 
 export class Type extends APIResource {
   /**
-   * Retrieves Security Center Insight Counts by Type
+   * Retrieves Security Center insight counts aggregated by insight type.
    */
   get(params?: TypeGetParams, options?: Core.RequestOptions): Core.APIPromise<TypeGetResponse>;
   get(options?: Core.RequestOptions): Core.APIPromise<TypeGetResponse>;
