@@ -291,6 +291,7 @@ export interface InstanceCreateResponse {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -616,6 +617,7 @@ export interface InstanceUpdateResponse {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -941,6 +943,7 @@ export interface InstanceListResponse {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -1266,6 +1269,7 @@ export interface InstanceDeleteResponse {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -1659,6 +1663,7 @@ export interface InstanceReadResponse {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -2074,6 +2079,7 @@ export interface InstanceCreateParams {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -2455,6 +2461,7 @@ export interface InstanceUpdateParams {
     | '@cf/baai/bge-large-en-v1.5'
     | '@cf/google/embeddinggemma-300m'
     | 'google-ai-studio/gemini-embedding-001'
+    | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
     | '';
@@ -2894,6 +2901,8 @@ export namespace InstanceChatCompletionsParams {
   }
 
   export interface AISearchOptions {
+    cache?: AISearchOptions.Cache;
+
     query_rewrite?: AISearchOptions.QueryRewrite;
 
     reranking?: AISearchOptions.Reranking;
@@ -2902,6 +2911,12 @@ export namespace InstanceChatCompletionsParams {
   }
 
   export namespace AISearchOptions {
+    export interface Cache {
+      cache_threshold?: 'super_strict_match' | 'close_enough' | 'flexible_friend' | 'anything_goes';
+
+      enabled?: boolean;
+    }
+
     export interface QueryRewrite {
       enabled?: boolean;
 
@@ -3029,6 +3044,8 @@ export namespace InstanceSearchParams {
   }
 
   export interface AISearchOptions {
+    cache?: AISearchOptions.Cache;
+
     query_rewrite?: AISearchOptions.QueryRewrite;
 
     reranking?: AISearchOptions.Reranking;
@@ -3037,6 +3054,12 @@ export namespace InstanceSearchParams {
   }
 
   export namespace AISearchOptions {
+    export interface Cache {
+      cache_threshold?: 'super_strict_match' | 'close_enough' | 'flexible_friend' | 'anything_goes';
+
+      enabled?: boolean;
+    }
+
     export interface QueryRewrite {
       enabled?: boolean;
 
