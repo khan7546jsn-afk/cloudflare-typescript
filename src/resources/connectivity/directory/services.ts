@@ -6,7 +6,7 @@ import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../.
 
 export class Services extends APIResource {
   /**
-   * Create connectivity service
+   * Create Workers VPC connectivity service
    *
    * @example
    * ```ts
@@ -35,7 +35,7 @@ export class Services extends APIResource {
   }
 
   /**
-   * Update connectivity service
+   * Update Workers VPC connectivity service
    *
    * @example
    * ```ts
@@ -71,7 +71,7 @@ export class Services extends APIResource {
   }
 
   /**
-   * List connectivity services
+   * List Workers VPC connectivity services
    *
    * @example
    * ```ts
@@ -96,7 +96,7 @@ export class Services extends APIResource {
   }
 
   /**
-   * Delete connectivity service
+   * Delete Workers VPC connectivity service
    *
    * @example
    * ```ts
@@ -119,7 +119,7 @@ export class Services extends APIResource {
   }
 
   /**
-   * Get connectivity service
+   * Get Workers VPC connectivity service
    *
    * @example
    * ```ts
