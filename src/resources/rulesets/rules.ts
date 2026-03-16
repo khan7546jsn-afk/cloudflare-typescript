@@ -5936,6 +5936,12 @@ export namespace SetConfigRule {
     polish?: 'off' | 'lossless' | 'lossy' | 'webp';
 
     /**
+     * Whether to redirect verified AI training crawlers to canonical URLs found in the
+     * HTML response.
+     */
+    redirects_for_ai_training?: boolean;
+
+    /**
      * The request body buffering mode.
      */
     request_body_buffering?: 'none' | 'standard' | 'full';
@@ -6187,6 +6193,12 @@ export namespace SetConfigRuleParam {
      * The Polish level to configure.
      */
     polish?: 'off' | 'lossless' | 'lossy' | 'webp';
+
+    /**
+     * Whether to redirect verified AI training crawlers to canonical URLs found in the
+     * HTML response.
+     */
+    redirects_for_ai_training?: boolean;
 
     /**
      * The request body buffering mode.
@@ -15047,6 +15059,12 @@ export declare namespace RuleCreateParams {
       polish?: 'off' | 'lossless' | 'lossy' | 'webp';
 
       /**
+       * Whether to redirect verified AI training crawlers to canonical URLs found in the
+       * HTML response.
+       */
+      redirects_for_ai_training?: boolean;
+
+      /**
        * The request body buffering mode.
        */
       request_body_buffering?: 'none' | 'standard' | 'full';
@@ -20210,6 +20228,12 @@ export declare namespace RuleEditParams {
        * The Polish level to configure.
        */
       polish?: 'off' | 'lossless' | 'lossy' | 'webp';
+
+      /**
+       * Whether to redirect verified AI training crawlers to canonical URLs found in the
+       * HTML response.
+       */
+      redirects_for_ai_training?: boolean;
 
       /**
        * The request body buffering mode.

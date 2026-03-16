@@ -1606,6 +1606,7 @@ export namespace ScriptUpdateParams {
       | Metadata.WorkersBindingKindImages
       | Metadata.WorkersBindingKindJson
       | Metadata.WorkersBindingKindKVNamespace
+      | Metadata.WorkersBindingKindMedia
       | Metadata.WorkersBindingKindMTLSCertificate
       | Metadata.WorkersBindingKindPlainText
       | Metadata.WorkersBindingKindPipelines
@@ -2070,6 +2071,18 @@ export namespace ScriptUpdateParams {
        * The kind of resource that the binding provides.
        */
       type: 'kv_namespace';
+    }
+
+    export interface WorkersBindingKindMedia {
+      /**
+       * A JavaScript variable name for the binding.
+       */
+      name: string;
+
+      /**
+       * The kind of resource that the binding provides.
+       */
+      type: 'media';
     }
 
     export interface WorkersBindingKindMTLSCertificate {

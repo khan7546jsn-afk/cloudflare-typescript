@@ -88,6 +88,7 @@ export interface SettingEditResponse {
     | SettingEditResponse.WorkersBindingKindImages
     | SettingEditResponse.WorkersBindingKindJson
     | SettingEditResponse.WorkersBindingKindKVNamespace
+    | SettingEditResponse.WorkersBindingKindMedia
     | SettingEditResponse.WorkersBindingKindMTLSCertificate
     | SettingEditResponse.WorkersBindingKindPlainText
     | SettingEditResponse.WorkersBindingKindPipelines
@@ -449,6 +450,18 @@ export namespace SettingEditResponse {
      * The kind of resource that the binding provides.
      */
     type: 'kv_namespace';
+  }
+
+  export interface WorkersBindingKindMedia {
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'media';
   }
 
   export interface WorkersBindingKindMTLSCertificate {
@@ -1004,6 +1017,7 @@ export interface SettingGetResponse {
     | SettingGetResponse.WorkersBindingKindImages
     | SettingGetResponse.WorkersBindingKindJson
     | SettingGetResponse.WorkersBindingKindKVNamespace
+    | SettingGetResponse.WorkersBindingKindMedia
     | SettingGetResponse.WorkersBindingKindMTLSCertificate
     | SettingGetResponse.WorkersBindingKindPlainText
     | SettingGetResponse.WorkersBindingKindPipelines
@@ -1365,6 +1379,18 @@ export namespace SettingGetResponse {
      * The kind of resource that the binding provides.
      */
     type: 'kv_namespace';
+  }
+
+  export interface WorkersBindingKindMedia {
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'media';
   }
 
   export interface WorkersBindingKindMTLSCertificate {
@@ -1935,6 +1961,7 @@ export namespace SettingEditParams {
       | Settings.WorkersBindingKindImages
       | Settings.WorkersBindingKindJson
       | Settings.WorkersBindingKindKVNamespace
+      | Settings.WorkersBindingKindMedia
       | Settings.WorkersBindingKindMTLSCertificate
       | Settings.WorkersBindingKindPlainText
       | Settings.WorkersBindingKindPipelines
@@ -2301,6 +2328,18 @@ export namespace SettingEditParams {
        * The kind of resource that the binding provides.
        */
       type: 'kv_namespace';
+    }
+
+    export interface WorkersBindingKindMedia {
+      /**
+       * A JavaScript variable name for the binding.
+       */
+      name: string;
+
+      /**
+       * The kind of resource that the binding provides.
+       */
+      type: 'media';
     }
 
     export interface WorkersBindingKindMTLSCertificate {
