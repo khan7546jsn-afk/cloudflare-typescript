@@ -6,17 +6,8 @@ import * as Core from '../../core';
 export class Usage extends APIResource {
   /**
    * Returns billable usage data for PayGo (self-serve) accounts. When no query
-   * parameters are provided, returns usage for the current billing period.
-   *
-   * Supports two mutually exclusive query modes:
-   *
-   * **Billing period mode:** Use `last_year_period_start` and
-   * `last_month_period_start` to query a specific billing period.
-   *
-   * **Date range mode:** Use `from` and `to` to query a custom date range (maximum
-   * 62 days).
-   *
-   * This endpoint is currently in beta and access is restricted to select accounts.
+   * parameters are provided, returns usage for the current billing period. This
+   * endpoint is currently in beta and access is restricted to select accounts.
    */
   paygo(params: UsagePaygoParams, options?: Core.RequestOptions): Core.APIPromise<UsagePaygoResponse> {
     const { account_id, ...query } = params;
@@ -106,19 +97,6 @@ export interface UsagePaygoParams {
    * Query param: Defines the start date for the usage query (e.g., 2025-02-01).
    */
   from?: string;
-
-  /**
-   * Query param: Specifies the month of the billing period to query (1-12). Must be
-   * provided together with last_year_period_start. Mutually exclusive with from/to.
-   */
-  last_month_period_start?: number;
-
-  /**
-   * Query param: Specifies the year of the billing period to query (e.g., 2025).
-   * Must be provided together with last_month_period_start. Mutually exclusive with
-   * from/to.
-   */
-  last_year_period_start?: number;
 
   /**
    * Query param: Defines the end date for the usage query (e.g., 2025-03-01).
