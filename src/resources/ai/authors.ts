@@ -6,7 +6,7 @@ import { SinglePage } from '../../pagination';
 
 export class Authors extends APIResource {
   /**
-   * Author Search
+   * Searches Workers AI models by author or organization name.
    */
   list(
     params: AuthorListParams,

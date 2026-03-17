@@ -6,7 +6,7 @@ import { SinglePage } from '../../pagination';
 
 export class Tasks extends APIResource {
   /**
-   * Task Search
+   * Searches Workers AI models by task type (e.g., text-generation, embeddings).
    */
   list(
     params: TaskListParams,

@@ -6,7 +6,7 @@ import { SinglePage } from '../../../pagination';
 
 export class Public extends APIResource {
   /**
-   * List Public Finetunes
+   * Lists publicly available fine-tuned models that can be used with Workers AI.
    */
   list(
     params: PublicListParams,

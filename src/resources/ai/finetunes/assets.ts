@@ -5,7 +5,7 @@ import * as Core from '../../../core';
 
 export class Assets extends APIResource {
   /**
-   * Upload a Finetune Asset
+   * Uploads training data assets for a Workers AI fine-tuning job.
    */
   create(
     finetuneId: string,
