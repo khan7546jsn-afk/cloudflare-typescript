@@ -6,7 +6,10 @@ import * as Core from '../../core';
 
 export class Geolocations extends APIResource {
   /**
-   * Retrieves a list of geolocations.
+   * Retrieves a list of geolocations. Geolocation names can be localized by sending
+   * an `Accept-Language` HTTP header with a BCP 47 language tag (e.g.,
+   * `Accept-Language: pt-PT`). The full quality-value chain is supported (e.g.,
+   * `pt-PT,pt;q=0.9,en;q=0.8`).
    *
    * @example
    * ```ts
@@ -33,7 +36,10 @@ export class Geolocations extends APIResource {
   }
 
   /**
-   * Retrieves the requested Geolocation information.
+   * Retrieves the requested Geolocation information. Geolocation names can be
+   * localized by sending an `Accept-Language` HTTP header with a BCP 47 language tag
+   * (e.g., `Accept-Language: pt-PT`). The full quality-value chain is supported
+   * (e.g., `pt-PT,pt;q=0.9,en;q=0.8`).
    *
    * @example
    * ```ts
@@ -92,6 +98,11 @@ export namespace GeolocationListResponse {
     type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
 
     code?: string;
+
+    /**
+     * BCP 47 locale code used for the geolocation name translation
+     */
+    locale?: string;
   }
 
   export namespace Geolocation {
@@ -118,6 +129,11 @@ export namespace GeolocationListResponse {
       type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
 
       code?: string;
+
+      /**
+       * BCP 47 locale code used for the geolocation name translation
+       */
+      locale?: string;
     }
 
     export namespace Parent {
@@ -142,6 +158,11 @@ export namespace GeolocationListResponse {
         type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
 
         code?: string;
+
+        /**
+         * BCP 47 locale code used for the geolocation name translation
+         */
+        locale?: string;
       }
     }
   }
@@ -175,6 +196,11 @@ export namespace GeolocationGetResponse {
     type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
 
     code?: string;
+
+    /**
+     * BCP 47 locale code used for the geolocation name translation
+     */
+    locale?: string;
   }
 
   export namespace Geolocation {
@@ -201,6 +227,11 @@ export namespace GeolocationGetResponse {
       type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
 
       code?: string;
+
+      /**
+       * BCP 47 locale code used for the geolocation name translation
+       */
+      locale?: string;
     }
 
     export namespace Parent {
@@ -225,6 +256,11 @@ export namespace GeolocationGetResponse {
         type: 'CONTINENT' | 'COUNTRY' | 'ADM1';
 
         code?: string;
+
+        /**
+         * BCP 47 locale code used for the geolocation name translation
+         */
+        locale?: string;
       }
     }
   }
