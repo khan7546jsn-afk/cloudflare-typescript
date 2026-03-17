@@ -12,7 +12,7 @@ export class Finetunes extends APIResource {
   public: PublicAPI.Public = new PublicAPI.Public(this._client);
 
   /**
-   * Create a new Finetune
+   * Creates a new fine-tuning job for a Workers AI model using custom training data.
    */
   create(
     params: FinetuneCreateParams,
@@ -27,7 +27,7 @@ export class Finetunes extends APIResource {
   }
 
   /**
-   * List Finetunes
+   * Lists all fine-tuning jobs created by the account, including status and metrics.
    */
   list(params: FinetuneListParams, options?: Core.RequestOptions): Core.APIPromise<FinetuneListResponse> {
     const { account_id } = params;
