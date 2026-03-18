@@ -113,7 +113,6 @@ export class AIGateway extends APIResource {
    *   collect_logs: true,
    *   rate_limiting_interval: 0,
    *   rate_limiting_limit: 0,
-   *   rate_limiting_technique: 'fixed',
    * });
    * ```
    */
@@ -144,7 +143,6 @@ export class AIGateway extends APIResource {
    *     collect_logs: true,
    *     rate_limiting_interval: 0,
    *     rate_limiting_limit: 0,
-   *     rate_limiting_technique: 'fixed',
    *   },
    * );
    * ```
@@ -258,8 +256,6 @@ export interface AIGatewayCreateResponse {
 
   rate_limiting_limit: number | null;
 
-  rate_limiting_technique: 'fixed' | 'sliding';
-
   authentication?: boolean;
 
   dlp?: AIGatewayCreateResponse.UnionMember0 | AIGatewayCreateResponse.UnionMember1;
@@ -275,6 +271,8 @@ export interface AIGatewayCreateResponse {
   logpush_public_key?: string | null;
 
   otel?: Array<AIGatewayCreateResponse.Otel> | null;
+
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   store_id?: string | null;
 
@@ -360,8 +358,6 @@ export interface AIGatewayUpdateResponse {
 
   rate_limiting_limit: number | null;
 
-  rate_limiting_technique: 'fixed' | 'sliding';
-
   authentication?: boolean;
 
   dlp?: AIGatewayUpdateResponse.UnionMember0 | AIGatewayUpdateResponse.UnionMember1;
@@ -377,6 +373,8 @@ export interface AIGatewayUpdateResponse {
   logpush_public_key?: string | null;
 
   otel?: Array<AIGatewayUpdateResponse.Otel> | null;
+
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   store_id?: string | null;
 
@@ -462,8 +460,6 @@ export interface AIGatewayListResponse {
 
   rate_limiting_limit: number | null;
 
-  rate_limiting_technique: 'fixed' | 'sliding';
-
   authentication?: boolean;
 
   dlp?: AIGatewayListResponse.UnionMember0 | AIGatewayListResponse.UnionMember1;
@@ -479,6 +475,8 @@ export interface AIGatewayListResponse {
   logpush_public_key?: string | null;
 
   otel?: Array<AIGatewayListResponse.Otel> | null;
+
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   store_id?: string | null;
 
@@ -564,8 +562,6 @@ export interface AIGatewayDeleteResponse {
 
   rate_limiting_limit: number | null;
 
-  rate_limiting_technique: 'fixed' | 'sliding';
-
   authentication?: boolean;
 
   dlp?: AIGatewayDeleteResponse.UnionMember0 | AIGatewayDeleteResponse.UnionMember1;
@@ -581,6 +577,8 @@ export interface AIGatewayDeleteResponse {
   logpush_public_key?: string | null;
 
   otel?: Array<AIGatewayDeleteResponse.Otel> | null;
+
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   store_id?: string | null;
 
@@ -666,8 +664,6 @@ export interface AIGatewayGetResponse {
 
   rate_limiting_limit: number | null;
 
-  rate_limiting_technique: 'fixed' | 'sliding';
-
   authentication?: boolean;
 
   dlp?: AIGatewayGetResponse.UnionMember0 | AIGatewayGetResponse.UnionMember1;
@@ -683,6 +679,8 @@ export interface AIGatewayGetResponse {
   logpush_public_key?: string | null;
 
   otel?: Array<AIGatewayGetResponse.Otel> | null;
+
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   store_id?: string | null;
 
@@ -787,11 +785,6 @@ export interface AIGatewayCreateParams {
   /**
    * Body param
    */
-  rate_limiting_technique: 'fixed' | 'sliding';
-
-  /**
-   * Body param
-   */
   authentication?: boolean;
 
   /**
@@ -813,6 +806,11 @@ export interface AIGatewayCreateParams {
    * Body param
    */
   logpush_public_key?: string | null;
+
+  /**
+   * Body param
+   */
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   /**
    * Body param: Controls how Workers AI inference calls routed through this gateway
@@ -860,11 +858,6 @@ export interface AIGatewayUpdateParams {
   /**
    * Body param
    */
-  rate_limiting_technique: 'fixed' | 'sliding';
-
-  /**
-   * Body param
-   */
   authentication?: boolean;
 
   /**
@@ -896,6 +889,11 @@ export interface AIGatewayUpdateParams {
    * Body param
    */
   otel?: Array<AIGatewayUpdateParams.Otel> | null;
+
+  /**
+   * Body param
+   */
+  rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   /**
    * Body param
