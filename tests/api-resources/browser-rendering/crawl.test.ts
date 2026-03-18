@@ -61,6 +61,7 @@ describe('resource crawl', () => {
           url: 'url',
         },
       ],
+      crawlPurposes: ['search'],
       depth: 1,
       emulateMediaType: 'emulateMediaType',
       formats: ['html'],
