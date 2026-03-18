@@ -7,7 +7,8 @@ import { type BlobLike } from '../../../../uploads';
 
 export class Upload extends APIResource {
   /**
-   * Prepare to upload a new version of a dataset
+   * Creates a new version of a DLP dataset, allowing you to stage changes before
+   * activation. Used for single-column EDM and custom word lists.
    *
    * @example
    * ```ts

@@ -5,7 +5,8 @@ import * as Core from '../../../core';
 
 export class Limits extends APIResource {
   /**
-   * Fetch limits associated with DLP for account
+   * Retrieves current DLP usage limits and quotas for the account, including dataset
+   * limits and scan quotas.
    *
    * @example
    * ```ts

@@ -5,7 +5,8 @@ import * as Core from '../../../core';
 
 export class PayloadLogs extends APIResource {
   /**
-   * Set payload log settings
+   * Enables or disables payload logging for DLP matches. When enabled, matched
+   * content is stored for review.
    *
    * @example
    * ```ts
@@ -28,7 +29,8 @@ export class PayloadLogs extends APIResource {
   }
 
   /**
-   * Get payload log settings
+   * Gets the current payload logging configuration for DLP, showing whether matched
+   * content is being logged.
    *
    * @example
    * ```ts
