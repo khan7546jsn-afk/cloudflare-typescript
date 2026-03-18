@@ -70,6 +70,9 @@ export class MoveCreateResponsesSinglePage extends SinglePage<MoveCreateResponse
 export class MoveBulkResponsesSinglePage extends SinglePage<MoveBulkResponse> {}
 
 export interface MoveCreateResponse {
+  /**
+   * @deprecated Deprecated, use `completed_at` instead
+   */
   completed_timestamp: string;
 
   /**
@@ -78,6 +81,8 @@ export interface MoveCreateResponse {
   item_count: number;
 
   success: boolean;
+
+  completed_at?: string;
 
   destination?: string | null;
 
@@ -91,6 +96,9 @@ export interface MoveCreateResponse {
 }
 
 export interface MoveBulkResponse {
+  /**
+   * @deprecated Deprecated, use `completed_at` instead
+   */
   completed_timestamp: string;
 
   /**
@@ -99,6 +107,8 @@ export interface MoveBulkResponse {
   item_count: number;
 
   success: boolean;
+
+  completed_at?: string;
 
   destination?: string | null;
 

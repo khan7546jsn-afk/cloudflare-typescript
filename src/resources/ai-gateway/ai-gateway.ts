@@ -279,9 +279,10 @@ export interface AIGatewayCreateResponse {
   stripe?: AIGatewayCreateResponse.Stripe | null;
 
   /**
-   * Controls how Workers AI inference calls routed through this gateway are billed
+   * Controls how Workers AI inference calls routed through this gateway are billed.
+   * Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   zdr?: boolean;
 }
@@ -381,9 +382,10 @@ export interface AIGatewayUpdateResponse {
   stripe?: AIGatewayUpdateResponse.Stripe | null;
 
   /**
-   * Controls how Workers AI inference calls routed through this gateway are billed
+   * Controls how Workers AI inference calls routed through this gateway are billed.
+   * Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   zdr?: boolean;
 }
@@ -483,9 +485,10 @@ export interface AIGatewayListResponse {
   stripe?: AIGatewayListResponse.Stripe | null;
 
   /**
-   * Controls how Workers AI inference calls routed through this gateway are billed
+   * Controls how Workers AI inference calls routed through this gateway are billed.
+   * Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   zdr?: boolean;
 }
@@ -585,9 +588,10 @@ export interface AIGatewayDeleteResponse {
   stripe?: AIGatewayDeleteResponse.Stripe | null;
 
   /**
-   * Controls how Workers AI inference calls routed through this gateway are billed
+   * Controls how Workers AI inference calls routed through this gateway are billed.
+   * Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   zdr?: boolean;
 }
@@ -687,9 +691,10 @@ export interface AIGatewayGetResponse {
   stripe?: AIGatewayGetResponse.Stripe | null;
 
   /**
-   * Controls how Workers AI inference calls routed through this gateway are billed
+   * Controls how Workers AI inference calls routed through this gateway are billed.
+   * Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   zdr?: boolean;
 }
@@ -814,9 +819,9 @@ export interface AIGatewayCreateParams {
 
   /**
    * Body param: Controls how Workers AI inference calls routed through this gateway
-   * are billed
+   * are billed. Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   /**
    * Body param
@@ -907,9 +912,9 @@ export interface AIGatewayUpdateParams {
 
   /**
    * Body param: Controls how Workers AI inference calls routed through this gateway
-   * are billed
+   * are billed. Only 'postpaid' is currently supported.
    */
-  workers_ai_billing_mode?: 'postpaid' | 'unified';
+  workers_ai_billing_mode?: 'postpaid';
 
   /**
    * Body param
