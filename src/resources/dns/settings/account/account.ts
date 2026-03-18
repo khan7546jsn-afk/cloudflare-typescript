@@ -62,12 +62,6 @@ export class Account extends APIResource {
 
 export interface AccountEditResponse {
   zone_defaults: AccountEditResponse.ZoneDefaults;
-
-  /**
-   * Whether to enforce DNS-only records for the entire account. Omitted when account
-   * settings are unavailable.
-   */
-  enforce_dns_only?: boolean;
 }
 
 export namespace AccountEditResponse {
@@ -192,12 +186,6 @@ export namespace AccountEditResponse {
 
 export interface AccountGetResponse {
   zone_defaults: AccountGetResponse.ZoneDefaults;
-
-  /**
-   * Whether to enforce DNS-only records for the entire account. Omitted when account
-   * settings are unavailable.
-   */
-  enforce_dns_only?: boolean;
 }
 
 export namespace AccountGetResponse {
@@ -325,11 +313,6 @@ export interface AccountEditParams {
    * Path param: Identifier.
    */
   account_id: string;
-
-  /**
-   * Body param: Whether to enforce DNS-only records for the entire account.
-   */
-  enforce_dns_only?: boolean;
 
   /**
    * Body param
