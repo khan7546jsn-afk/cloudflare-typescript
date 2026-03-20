@@ -1,5 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export {
+  ConnectionGetResponsesSinglePage,
+  Connections,
+  type ConnectionGetResponse,
+  type ConnectionGetParams,
+} from './connections';
+export { Connectors } from './connectors';
+export { Failover } from './failover';
 export { Token, type TokenGetResponse, type TokenGetParams } from './token';
 export {
   WARPConnectorListResponsesV4PagePaginationArray,

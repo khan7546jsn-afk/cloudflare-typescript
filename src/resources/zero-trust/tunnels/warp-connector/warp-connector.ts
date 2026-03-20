@@ -2,12 +2,26 @@
 
 import { APIResource } from '../../../../resource';
 import * as Core from '../../../../core';
+import * as ConnectionsAPI from './connections';
+import {
+  ConnectionGetParams,
+  ConnectionGetResponse,
+  ConnectionGetResponsesSinglePage,
+  Connections,
+} from './connections';
+import * as ConnectorsAPI from './connectors';
+import { Connectors } from './connectors';
+import * as FailoverAPI from './failover';
+import { Failover } from './failover';
 import * as TokenAPI from './token';
 import { Token, TokenGetParams, TokenGetResponse } from './token';
 import { V4PagePaginationArray, type V4PagePaginationArrayParams } from '../../../../pagination';
 
 export class WARPConnector extends APIResource {
   token: TokenAPI.Token = new TokenAPI.Token(this._client);
+  connections: ConnectionsAPI.Connections = new ConnectionsAPI.Connections(this._client);
+  connectors: ConnectorsAPI.Connectors = new ConnectorsAPI.Connectors(this._client);
+  failover: FailoverAPI.Failover = new FailoverAPI.Failover(this._client);
 
   /**
    * Creates a new Warp Connector Tunnel in an account.
@@ -823,6 +837,10 @@ export interface WARPConnectorGetParams {
 WARPConnector.WARPConnectorListResponsesV4PagePaginationArray =
   WARPConnectorListResponsesV4PagePaginationArray;
 WARPConnector.Token = Token;
+WARPConnector.Connections = Connections;
+WARPConnector.ConnectionGetResponsesSinglePage = ConnectionGetResponsesSinglePage;
+WARPConnector.Connectors = Connectors;
+WARPConnector.Failover = Failover;
 
 export declare namespace WARPConnector {
   export {
@@ -840,4 +858,15 @@ export declare namespace WARPConnector {
   };
 
   export { Token as Token, type TokenGetResponse as TokenGetResponse, type TokenGetParams as TokenGetParams };
+
+  export {
+    Connections as Connections,
+    type ConnectionGetResponse as ConnectionGetResponse,
+    ConnectionGetResponsesSinglePage as ConnectionGetResponsesSinglePage,
+    type ConnectionGetParams as ConnectionGetParams,
+  };
+
+  export { Connectors as Connectors };
+
+  export { Failover as Failover };
 }
