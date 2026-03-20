@@ -274,6 +274,21 @@ export interface AIGatewayCreateResponse {
 
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
+  /**
+   * Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
+
   store_id?: string | null;
 
   stripe?: AIGatewayCreateResponse.Stripe | null;
@@ -376,6 +391,21 @@ export interface AIGatewayUpdateResponse {
   otel?: Array<AIGatewayUpdateResponse.Otel> | null;
 
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
+
+  /**
+   * Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
 
   store_id?: string | null;
 
@@ -480,6 +510,21 @@ export interface AIGatewayListResponse {
 
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
+  /**
+   * Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
+
   store_id?: string | null;
 
   stripe?: AIGatewayListResponse.Stripe | null;
@@ -583,6 +628,21 @@ export interface AIGatewayDeleteResponse {
 
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
+  /**
+   * Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
+
   store_id?: string | null;
 
   stripe?: AIGatewayDeleteResponse.Stripe | null;
@@ -685,6 +745,21 @@ export interface AIGatewayGetResponse {
   otel?: Array<AIGatewayGetResponse.Otel> | null;
 
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
+
+  /**
+   * Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
 
   store_id?: string | null;
 
@@ -818,6 +893,21 @@ export interface AIGatewayCreateParams {
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
 
   /**
+   * Body param: Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Body param: Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Body param: Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
+
+  /**
    * Body param: Controls how Workers AI inference calls routed through this gateway
    * are billed. Only 'postpaid' is currently supported.
    */
@@ -899,6 +989,21 @@ export interface AIGatewayUpdateParams {
    * Body param
    */
   rate_limiting_technique?: 'fixed' | 'sliding' | null;
+
+  /**
+   * Body param: Backoff strategy for retry delays
+   */
+  retry_backoff?: 'constant' | 'linear' | 'exponential' | null;
+
+  /**
+   * Body param: Delay between retry attempts in milliseconds (0-5000)
+   */
+  retry_delay?: number | null;
+
+  /**
+   * Body param: Maximum number of retry attempts for failed requests (1-5)
+   */
+  retry_max_attempts?: number | null;
 
   /**
    * Body param
