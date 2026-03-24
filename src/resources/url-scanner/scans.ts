@@ -707,6 +707,8 @@ export namespace ScanGetResponse {
 
       wappa: Processors.Wappa;
 
+      phishing_v2?: Processors.PhishingV2;
+
       robotsTxt?: Processors.RobotsTXT;
 
       urlCategories?: Processors.URLCategories;
@@ -841,6 +843,10 @@ export namespace ScanGetResponse {
             patternType: string;
           }
         }
+      }
+
+      export interface PhishingV2 {
+        data: Array<string>;
       }
 
       export interface RobotsTXT {
