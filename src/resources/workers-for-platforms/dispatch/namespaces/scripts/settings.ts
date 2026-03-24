@@ -76,6 +76,8 @@ export interface SettingEditResponse {
    */
   bindings?: Array<
     | SettingEditResponse.WorkersBindingKindAI
+    | SettingEditResponse.WorkersBindingKindAISearch
+    | SettingEditResponse.WorkersBindingKindAISearchNamespace
     | SettingEditResponse.WorkersBindingKindAnalyticsEngine
     | SettingEditResponse.WorkersBindingKindAssets
     | SettingEditResponse.WorkersBindingKindBrowser
@@ -178,6 +180,50 @@ export namespace SettingEditResponse {
      * The kind of resource that the binding provides.
      */
     type: 'ai';
+  }
+
+  export interface WorkersBindingKindAISearch {
+    /**
+     * The user-chosen instance name. Must exist at deploy time. The worker can search,
+     * chat, update, and manage items/jobs on this instance.
+     */
+    instance_name: string;
+
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'ai_search';
+
+    /**
+     * The namespace the instance belongs to. Defaults to "default" if omitted.
+     * Customers who don't use namespaces can simply omit this field.
+     */
+    namespace?: string;
+  }
+
+  export interface WorkersBindingKindAISearchNamespace {
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * The user-chosen namespace name. Must exist before deploy -- Wrangler handles
+     * auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is
+     * auto-created by config-api for new accounts. Grants full access (CRUD + search +
+     * chat) to all instances within the namespace.
+     */
+    namespace: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'ai_search_namespace';
   }
 
   export interface WorkersBindingKindAnalyticsEngine {
@@ -1035,6 +1081,8 @@ export interface SettingGetResponse {
    */
   bindings?: Array<
     | SettingGetResponse.WorkersBindingKindAI
+    | SettingGetResponse.WorkersBindingKindAISearch
+    | SettingGetResponse.WorkersBindingKindAISearchNamespace
     | SettingGetResponse.WorkersBindingKindAnalyticsEngine
     | SettingGetResponse.WorkersBindingKindAssets
     | SettingGetResponse.WorkersBindingKindBrowser
@@ -1137,6 +1185,50 @@ export namespace SettingGetResponse {
      * The kind of resource that the binding provides.
      */
     type: 'ai';
+  }
+
+  export interface WorkersBindingKindAISearch {
+    /**
+     * The user-chosen instance name. Must exist at deploy time. The worker can search,
+     * chat, update, and manage items/jobs on this instance.
+     */
+    instance_name: string;
+
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'ai_search';
+
+    /**
+     * The namespace the instance belongs to. Defaults to "default" if omitted.
+     * Customers who don't use namespaces can simply omit this field.
+     */
+    namespace?: string;
+  }
+
+  export interface WorkersBindingKindAISearchNamespace {
+    /**
+     * A JavaScript variable name for the binding.
+     */
+    name: string;
+
+    /**
+     * The user-chosen namespace name. Must exist before deploy -- Wrangler handles
+     * auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is
+     * auto-created by config-api for new accounts. Grants full access (CRUD + search +
+     * chat) to all instances within the namespace.
+     */
+    namespace: string;
+
+    /**
+     * The kind of resource that the binding provides.
+     */
+    type: 'ai_search_namespace';
   }
 
   export interface WorkersBindingKindAnalyticsEngine {
@@ -2009,6 +2101,8 @@ export namespace SettingEditParams {
      */
     bindings?: Array<
       | Settings.WorkersBindingKindAI
+      | Settings.WorkersBindingKindAISearch
+      | Settings.WorkersBindingKindAISearchNamespace
       | Settings.WorkersBindingKindAnalyticsEngine
       | Settings.WorkersBindingKindAssets
       | Settings.WorkersBindingKindBrowser
@@ -2116,6 +2210,50 @@ export namespace SettingEditParams {
        * The kind of resource that the binding provides.
        */
       type: 'ai';
+    }
+
+    export interface WorkersBindingKindAISearch {
+      /**
+       * The user-chosen instance name. Must exist at deploy time. The worker can search,
+       * chat, update, and manage items/jobs on this instance.
+       */
+      instance_name: string;
+
+      /**
+       * A JavaScript variable name for the binding.
+       */
+      name: string;
+
+      /**
+       * The kind of resource that the binding provides.
+       */
+      type: 'ai_search';
+
+      /**
+       * The namespace the instance belongs to. Defaults to "default" if omitted.
+       * Customers who don't use namespaces can simply omit this field.
+       */
+      namespace?: string;
+    }
+
+    export interface WorkersBindingKindAISearchNamespace {
+      /**
+       * A JavaScript variable name for the binding.
+       */
+      name: string;
+
+      /**
+       * The user-chosen namespace name. Must exist before deploy -- Wrangler handles
+       * auto-creation on deploy failure (R2 bucket pattern). The "default" namespace is
+       * auto-created by config-api for new accounts. Grants full access (CRUD + search +
+       * chat) to all instances within the namespace.
+       */
+      namespace: string;
+
+      /**
+       * The kind of resource that the binding provides.
+       */
+      type: 'ai_search_namespace';
     }
 
     export interface WorkersBindingKindAnalyticsEngine {
