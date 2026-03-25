@@ -233,7 +233,7 @@ export class InstanceListResponsesV4PagePaginationArray extends V4PagePagination
 
 export interface InstanceCreateResponse {
   /**
-   * Use your AI Search ID.
+   * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
    */
   id: string;
 
@@ -271,7 +271,8 @@ export interface InstanceCreateResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   cache?: boolean;
 
@@ -294,13 +295,16 @@ export interface InstanceCreateResponse {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   enable?: boolean;
 
   fusion_method?: 'max' | 'rrf';
 
   hybrid_search_enabled?: boolean;
+
+  indexing_options?: InstanceCreateResponse.IndexingOptions | null;
 
   last_activity?: string | null;
 
@@ -310,6 +314,8 @@ export interface InstanceCreateResponse {
 
   modified_by?: string | null;
 
+  namespace?: string | null;
+
   paused?: boolean;
 
   public_endpoint_id?: string | null;
@@ -318,7 +324,7 @@ export interface InstanceCreateResponse {
 
   reranking?: boolean;
 
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   retrieval_options?: InstanceCreateResponse.RetrievalOptions | null;
 
@@ -350,7 +356,8 @@ export interface InstanceCreateResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   rewrite_query?: boolean;
 
@@ -372,6 +379,16 @@ export namespace InstanceCreateResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -559,7 +576,7 @@ export namespace InstanceCreateResponse {
 
 export interface InstanceUpdateResponse {
   /**
-   * Use your AI Search ID.
+   * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
    */
   id: string;
 
@@ -597,7 +614,8 @@ export interface InstanceUpdateResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   cache?: boolean;
 
@@ -620,13 +638,16 @@ export interface InstanceUpdateResponse {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   enable?: boolean;
 
   fusion_method?: 'max' | 'rrf';
 
   hybrid_search_enabled?: boolean;
+
+  indexing_options?: InstanceUpdateResponse.IndexingOptions | null;
 
   last_activity?: string | null;
 
@@ -636,6 +657,8 @@ export interface InstanceUpdateResponse {
 
   modified_by?: string | null;
 
+  namespace?: string | null;
+
   paused?: boolean;
 
   public_endpoint_id?: string | null;
@@ -644,7 +667,7 @@ export interface InstanceUpdateResponse {
 
   reranking?: boolean;
 
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   retrieval_options?: InstanceUpdateResponse.RetrievalOptions | null;
 
@@ -676,7 +699,8 @@ export interface InstanceUpdateResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   rewrite_query?: boolean;
 
@@ -698,6 +722,16 @@ export namespace InstanceUpdateResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -885,7 +919,7 @@ export namespace InstanceUpdateResponse {
 
 export interface InstanceListResponse {
   /**
-   * Use your AI Search ID.
+   * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
    */
   id: string;
 
@@ -923,7 +957,8 @@ export interface InstanceListResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   cache?: boolean;
 
@@ -946,13 +981,16 @@ export interface InstanceListResponse {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   enable?: boolean;
 
   fusion_method?: 'max' | 'rrf';
 
   hybrid_search_enabled?: boolean;
+
+  indexing_options?: InstanceListResponse.IndexingOptions | null;
 
   last_activity?: string | null;
 
@@ -962,6 +1000,8 @@ export interface InstanceListResponse {
 
   modified_by?: string | null;
 
+  namespace?: string | null;
+
   paused?: boolean;
 
   public_endpoint_id?: string | null;
@@ -970,7 +1010,7 @@ export interface InstanceListResponse {
 
   reranking?: boolean;
 
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   retrieval_options?: InstanceListResponse.RetrievalOptions | null;
 
@@ -1002,7 +1042,8 @@ export interface InstanceListResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   rewrite_query?: boolean;
 
@@ -1024,6 +1065,16 @@ export namespace InstanceListResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -1211,7 +1262,7 @@ export namespace InstanceListResponse {
 
 export interface InstanceDeleteResponse {
   /**
-   * Use your AI Search ID.
+   * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
    */
   id: string;
 
@@ -1249,7 +1300,8 @@ export interface InstanceDeleteResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   cache?: boolean;
 
@@ -1272,13 +1324,16 @@ export interface InstanceDeleteResponse {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   enable?: boolean;
 
   fusion_method?: 'max' | 'rrf';
 
   hybrid_search_enabled?: boolean;
+
+  indexing_options?: InstanceDeleteResponse.IndexingOptions | null;
 
   last_activity?: string | null;
 
@@ -1288,6 +1343,8 @@ export interface InstanceDeleteResponse {
 
   modified_by?: string | null;
 
+  namespace?: string | null;
+
   paused?: boolean;
 
   public_endpoint_id?: string | null;
@@ -1296,7 +1353,7 @@ export interface InstanceDeleteResponse {
 
   reranking?: boolean;
 
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   retrieval_options?: InstanceDeleteResponse.RetrievalOptions | null;
 
@@ -1328,7 +1385,8 @@ export interface InstanceDeleteResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   rewrite_query?: boolean;
 
@@ -1350,6 +1408,16 @@ export namespace InstanceDeleteResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -1590,6 +1658,8 @@ export namespace InstanceChatCompletionsResponse {
     }
 
     export interface ScoringDetails {
+      fusion_method?: 'rrf' | 'max';
+
       keyword_rank?: number;
 
       keyword_score?: number;
@@ -1605,7 +1675,7 @@ export namespace InstanceChatCompletionsResponse {
 
 export interface InstanceReadResponse {
   /**
-   * Use your AI Search ID.
+   * AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
    */
   id: string;
 
@@ -1643,7 +1713,8 @@ export interface InstanceReadResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   cache?: boolean;
 
@@ -1666,13 +1737,16 @@ export interface InstanceReadResponse {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   enable?: boolean;
 
   fusion_method?: 'max' | 'rrf';
 
   hybrid_search_enabled?: boolean;
+
+  indexing_options?: InstanceReadResponse.IndexingOptions | null;
 
   last_activity?: string | null;
 
@@ -1682,6 +1756,8 @@ export interface InstanceReadResponse {
 
   modified_by?: string | null;
 
+  namespace?: string | null;
+
   paused?: boolean;
 
   public_endpoint_id?: string | null;
@@ -1690,7 +1766,7 @@ export interface InstanceReadResponse {
 
   reranking?: boolean;
 
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   retrieval_options?: InstanceReadResponse.RetrievalOptions | null;
 
@@ -1722,7 +1798,8 @@ export interface InstanceReadResponse {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   rewrite_query?: boolean;
 
@@ -1744,6 +1821,16 @@ export namespace InstanceReadResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -1960,6 +2047,8 @@ export namespace InstanceSearchResponse {
     }
 
     export interface ScoringDetails {
+      fusion_method?: 'rrf' | 'max';
+
       keyword_rank?: number;
 
       keyword_score?: number;
@@ -1984,6 +2073,8 @@ export interface InstanceStatsResponse {
 
   last_activity?: string;
 
+  outdated?: number;
+
   queued?: number;
 
   running?: number;
@@ -1998,7 +2089,8 @@ export interface InstanceCreateParams {
   account_id: string;
 
   /**
-   * Body param: Use your AI Search ID.
+   * Body param: AI Search instance ID. Lowercase alphanumeric, hyphens, and
+   * underscores.
    */
   id: string;
 
@@ -2038,7 +2130,8 @@ export interface InstanceCreateParams {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2082,7 +2175,8 @@ export interface InstanceCreateParams {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2093,6 +2187,11 @@ export interface InstanceCreateParams {
    * Body param
    */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Body param
+   */
+  indexing_options?: InstanceCreateParams.IndexingOptions | null;
 
   /**
    * Body param
@@ -2117,7 +2216,7 @@ export interface InstanceCreateParams {
   /**
    * Body param
    */
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   /**
    * Body param
@@ -2155,7 +2254,8 @@ export interface InstanceCreateParams {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2193,6 +2293,16 @@ export namespace InstanceCreateParams {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -2420,7 +2530,8 @@ export interface InstanceUpdateParams {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2464,7 +2575,8 @@ export interface InstanceUpdateParams {
     | 'google-ai-studio/gemini-embedding-2-preview'
     | 'openai/text-embedding-3-small'
     | 'openai/text-embedding-3-large'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2475,6 +2587,11 @@ export interface InstanceUpdateParams {
    * Body param
    */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Body param
+   */
+  indexing_options?: InstanceUpdateParams.IndexingOptions | null;
 
   /**
    * Body param
@@ -2504,7 +2621,7 @@ export interface InstanceUpdateParams {
   /**
    * Body param
    */
-  reranking_model?: '@cf/baai/bge-reranker-base' | '';
+  reranking_model?: '@cf/baai/bge-reranker-base' | '' | null;
 
   /**
    * Body param
@@ -2542,7 +2659,8 @@ export interface InstanceUpdateParams {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2595,7 +2713,8 @@ export interface InstanceUpdateParams {
     | 'openai/gpt-5'
     | 'openai/gpt-5-mini'
     | 'openai/gpt-5-nano'
-    | '';
+    | ''
+    | null;
 
   /**
    * Body param
@@ -2623,6 +2742,16 @@ export namespace InstanceUpdateParams {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  export interface IndexingOptions {
+    /**
+     * Tokenizer used for keyword search indexing. porter provides word-level
+     * tokenization with Porter stemming (good for natural language queries). trigram
+     * enables character-level substring matching (good for partial matches, code,
+     * identifiers). Changing this triggers a full re-index. Defaults to porter.
+     */
+    keyword_tokenizer?: 'porter' | 'trigram';
   }
 
   export interface Metadata {
@@ -2813,6 +2942,11 @@ export interface InstanceListParams extends V4PagePaginationArrayParams {
    * Path param
    */
   account_id: string;
+
+  /**
+   * Query param
+   */
+  namespace?: string | null;
 
   /**
    * Query param: Order By Column Name
