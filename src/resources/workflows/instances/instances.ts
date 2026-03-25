@@ -201,7 +201,7 @@ export namespace InstanceGetResponse {
 
     name: string;
 
-    output: unknown;
+    output: string | null;
 
     start: string;
 
@@ -295,11 +295,11 @@ export namespace InstanceGetResponse {
 
     name: string;
 
-    output: unknown | string | number | boolean;
-
     start: string;
 
     type: 'waitForEvent';
+
+    output?: string;
   }
 
   export namespace UnionMember3 {
