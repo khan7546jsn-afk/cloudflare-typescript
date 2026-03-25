@@ -29,7 +29,7 @@ describe('resource logoMatches', () => {
       limit: 'limit',
       offset: 'offset',
       order: 'asc',
-      orderBy: 'tag',
+      orderBy: 'matchedAt',
     });
   });
 });
