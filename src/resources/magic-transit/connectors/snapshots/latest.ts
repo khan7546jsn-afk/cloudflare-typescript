@@ -936,11 +936,6 @@ export namespace LatestListResponse {
        * MAC Address of the device the IP Address was leased to
        */
       mac_address: string;
-
-      /**
-       * Connector identifier
-       */
-      connector_id?: string;
     }
 
     /**
@@ -1018,11 +1013,6 @@ export namespace LatestListResponse {
       writes_merged: number;
 
       /**
-       * Connector identifier
-       */
-      connector_id?: string;
-
-      /**
        * Discards completed successfully
        */
       discards?: number;
@@ -1067,11 +1057,6 @@ export namespace LatestListResponse {
        */
       operstate: string;
 
-      /**
-       * Connector identifier
-       */
-      connector_id?: string;
-
       ip_addresses?: Array<Interface.IPAddress>;
 
       /**
@@ -1094,11 +1079,6 @@ export namespace LatestListResponse {
          * IP address of the network interface
          */
         ip_address: string;
-
-        /**
-         * Connector identifier
-         */
-        connector_id?: string;
       }
     }
 
@@ -1130,11 +1110,6 @@ export namespace LatestListResponse {
        * Available disk size (bytes)
        */
       available_bytes?: number;
-
-      /**
-       * Connector identifier
-       */
-      connector_id?: string;
 
       /**
        * Determines whether the disk is read-only
@@ -1240,11 +1215,6 @@ export namespace LatestListResponse {
        * Total packets transmitted
        */
       sent_packets: number;
-
-      /**
-       * Connector identifier
-       */
-      connector_id?: string;
     }
 
     /**
@@ -1255,11 +1225,6 @@ export namespace LatestListResponse {
        * Sensor identifier for the component
        */
       label: string;
-
-      /**
-       * Connector identifier
-       */
-      connector_id?: string;
 
       /**
        * Critical failure temperature of the component (degrees Celsius)
@@ -1301,11 +1266,6 @@ export namespace LatestListResponse {
        * Tunnel identifier
        */
       tunnel_id: string;
-
-      /**
-       * Connector identifier
-       */
-      connector_id?: string;
 
       /**
        * MTU as measured between the two ends of the tunnel
