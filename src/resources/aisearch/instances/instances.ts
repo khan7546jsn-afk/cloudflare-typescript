@@ -304,7 +304,16 @@ export interface InstanceCreateResponse {
 
   fusion_method?: 'max' | 'rrf';
 
+  /**
+   * @deprecated Deprecated — use index_method instead.
+   */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  index_method?: InstanceCreateResponse.IndexMethod;
 
   indexing_options?: InstanceCreateResponse.IndexingOptions | null;
 
@@ -381,6 +390,22 @@ export namespace InstanceCreateResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
@@ -651,7 +676,16 @@ export interface InstanceUpdateResponse {
 
   fusion_method?: 'max' | 'rrf';
 
+  /**
+   * @deprecated Deprecated — use index_method instead.
+   */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  index_method?: InstanceUpdateResponse.IndexMethod;
 
   indexing_options?: InstanceUpdateResponse.IndexingOptions | null;
 
@@ -728,6 +762,22 @@ export namespace InstanceUpdateResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
@@ -998,7 +1048,16 @@ export interface InstanceListResponse {
 
   fusion_method?: 'max' | 'rrf';
 
+  /**
+   * @deprecated Deprecated — use index_method instead.
+   */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  index_method?: InstanceListResponse.IndexMethod;
 
   indexing_options?: InstanceListResponse.IndexingOptions | null;
 
@@ -1075,6 +1134,22 @@ export namespace InstanceListResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
@@ -1345,7 +1420,16 @@ export interface InstanceDeleteResponse {
 
   fusion_method?: 'max' | 'rrf';
 
+  /**
+   * @deprecated Deprecated — use index_method instead.
+   */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  index_method?: InstanceDeleteResponse.IndexMethod;
 
   indexing_options?: InstanceDeleteResponse.IndexingOptions | null;
 
@@ -1422,6 +1506,22 @@ export namespace InstanceDeleteResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
@@ -1762,7 +1862,16 @@ export interface InstanceReadResponse {
 
   fusion_method?: 'max' | 'rrf';
 
+  /**
+   * @deprecated Deprecated — use index_method instead.
+   */
   hybrid_search_enabled?: boolean;
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  index_method?: InstanceReadResponse.IndexMethod;
 
   indexing_options?: InstanceReadResponse.IndexingOptions | null;
 
@@ -1839,6 +1948,22 @@ export namespace InstanceReadResponse {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
@@ -2204,9 +2329,10 @@ export interface InstanceCreateParams {
   fusion_method?: 'max' | 'rrf';
 
   /**
-   * Body param
+   * Body param: Controls which storage backends are used during indexing. Defaults
+   * to vector-only.
    */
-  hybrid_search_enabled?: boolean;
+  index_method?: InstanceCreateParams.IndexMethod;
 
   /**
    * Body param
@@ -2313,6 +2439,22 @@ export namespace InstanceCreateParams {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
@@ -2606,9 +2748,10 @@ export interface InstanceUpdateParams {
   fusion_method?: 'max' | 'rrf';
 
   /**
-   * Body param
+   * Body param: Controls which storage backends are used during indexing. Defaults
+   * to vector-only.
    */
-  hybrid_search_enabled?: boolean;
+  index_method?: InstanceUpdateParams.IndexMethod;
 
   /**
    * Body param
@@ -2764,6 +2907,22 @@ export namespace InstanceUpdateParams {
     data_type: 'text' | 'number' | 'boolean' | 'datetime';
 
     field_name: string;
+  }
+
+  /**
+   * Controls which storage backends are used during indexing. Defaults to
+   * vector-only.
+   */
+  export interface IndexMethod {
+    /**
+     * Enable keyword (BM25) storage backend.
+     */
+    keyword: boolean;
+
+    /**
+     * Enable vector (embedding) storage backend.
+     */
+    vector: boolean;
   }
 
   export interface IndexingOptions {
